@@ -131,6 +131,10 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test)
     androidTestImplementation(libs.hilt.android.testing)
 
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.startup)
+
+
     baselineProfile(projects.benchmarks)
 }
 
