@@ -33,8 +33,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class InterestsViewModel @Inject constructor(
+class InterestsViewModel constructor(
     private val savedStateHandle: SavedStateHandle,
     val userDataRepository: UserDataRepository,
     getFollowableTopics: GetFollowableTopicsUseCase,

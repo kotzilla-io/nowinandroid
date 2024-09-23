@@ -33,13 +33,14 @@ import com.google.samples.apps.nowinandroid.core.model.data.FollowableTopic
 import com.google.samples.apps.nowinandroid.core.ui.DevicePreviews
 import com.google.samples.apps.nowinandroid.core.ui.FollowableTopicPreviewParameterProvider
 import com.google.samples.apps.nowinandroid.core.ui.TrackScreenViewEvent
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun InterestsRoute(
     onTopicClick: (String) -> Unit,
     modifier: Modifier = Modifier,
     highlightSelectedTopic: Boolean = false,
-    viewModel: InterestsViewModel = hiltViewModel(),
+    viewModel: InterestsViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 

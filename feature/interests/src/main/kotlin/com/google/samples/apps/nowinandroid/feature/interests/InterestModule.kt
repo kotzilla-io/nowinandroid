@@ -16,18 +16,10 @@
 
 package com.google.samples.apps.nowinandroid.feature.interests
 
-import com.google.samples.apps.nowinandroid.core.domain.GetFollowableTopicsUseCase
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import org.koin.core.component.KoinComponent
+import org.koin.core.module.dsl.viewModelOf
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-object InterestModuleBridgeHilt : KoinComponent {
 
-    @Provides
-    fun providesGetFollowableTopicsUseCase(): GetFollowableTopicsUseCase = getKoin().get()
-
+val interestModule = module {
+    viewModelOf(::InterestsViewModel)
 }

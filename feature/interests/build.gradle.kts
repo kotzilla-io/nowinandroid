@@ -32,4 +32,6 @@ dependencies {
 
     androidTestImplementation(libs.bundles.androidx.compose.ui.test)
     androidTestImplementation(projects.core.testing)
+
+    implementation(libs.koin.compose.viewmodel)
 }
