@@ -39,8 +39,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class SearchViewModel @Inject constructor(
+class SearchViewModel(
     getSearchContentsUseCase: GetSearchContentsUseCase,
     recentSearchQueriesUseCase: GetRecentSearchQueriesUseCase,
     private val searchContentsRepository: SearchContentsRepository,

@@ -97,6 +97,8 @@ interface DataModuleBridgeKoin {
     fun newsRepository(): NewsRepository
     fun userDataRepository(): UserDataRepository
     fun topicsRepository() : TopicsRepository
+    fun searchContentsRepository() : SearchContentsRepository
+    fun recentSearchRepository(): RecentSearchRepository
 }
 
 /*
@@ -112,4 +114,6 @@ val dataKoinModule = module {
     single { daggerBridge<DataModuleBridgeKoin>().newsRepository() }
     single { daggerBridge<DataModuleBridgeKoin>().userDataRepository() }
     single { daggerBridge<DataModuleBridgeKoin>().topicsRepository() }
+    single { daggerBridge<DataModuleBridgeKoin>().searchContentsRepository() }
+    single { daggerBridge<DataModuleBridgeKoin>().recentSearchRepository() }
 }

@@ -14,13 +14,11 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.nowinandroid.core.domain
+package com.google.samples.apps.nowinandroid.feature.search
 
-import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
-val domainModule = module {
-    factoryOf(::GetFollowableTopicsUseCase)
-    factoryOf(::GetSearchContentsUseCase)
-    factoryOf(::GetRecentSearchQueriesUseCase)
+val searchModule = module {
+    viewModelOf(::SearchViewModel)
 }
