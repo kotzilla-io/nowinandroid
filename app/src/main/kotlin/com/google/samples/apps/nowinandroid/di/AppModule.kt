@@ -18,15 +18,19 @@ package com.google.samples.apps.nowinandroid.di
 
 import com.google.samples.apps.nowinandroid.core.analytics.analyticsKoinModule
 import com.google.samples.apps.nowinandroid.core.data.di.dataKoinModule
-import com.google.samples.apps.nowinandroid.core.network.di.coroutineScopesKoinModule
 import com.google.samples.apps.nowinandroid.feature.bookmarks.bookmarksModule
 import com.google.samples.apps.nowinandroid.feature.foryou.forYouModule
 import com.google.samples.apps.nowinandroid.feature.interests.interestModule
 import com.google.samples.apps.nowinandroid.feature.search.searchModule
+import com.google.samples.apps.nowinandroid.feature.settings.settingsModule
 import com.google.samples.apps.nowinandroid.feature.topic.topicModule
 import com.google.samples.apps.nowinandroid.sync.di.syncKoinModule
 import org.koin.dsl.module
 
+val featureModules = module {
+    includes(forYouModule, interestModule, topicModule, bookmarksModule, searchModule, settingsModule)
+}
+
 val appModule = module {
-    includes(dataKoinModule, analyticsKoinModule, jankStatsKoinModule, syncKoinModule, forYouModule, interestModule, topicModule, bookmarksModule, searchModule)
+    includes(dataKoinModule, analyticsKoinModule, jankStatsKoinModule, syncKoinModule, featureModules)
 }

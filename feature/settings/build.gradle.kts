@@ -28,6 +28,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.google.oss.licenses)
     implementation(projects.core.data)
+    implementation(libs.koin.compose.viewmodel)
 
     testImplementation(projects.core.testing)
 
