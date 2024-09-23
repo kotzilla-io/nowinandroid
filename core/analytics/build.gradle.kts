@@ -25,6 +25,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.compose.runtime)
+    implementation(libs.koin.core)
 
     prodImplementation(platform(libs.firebase.bom))
     prodImplementation(libs.firebase.analytics)
