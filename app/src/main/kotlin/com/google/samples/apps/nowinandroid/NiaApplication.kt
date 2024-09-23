@@ -26,6 +26,7 @@ import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
 import dagger.hilt.android.HiltAndroidApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
+import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.androix.startup.KoinStartup.onKoinStartup
 import org.koin.core.logger.Level.DEBUG
 import javax.inject.Inject
@@ -46,6 +47,7 @@ class NiaApplication : Application(), ImageLoaderFactory {
             androidContext(this@NiaApplication)
             androidLogger(DEBUG)
             modules(appModule)
+            workManagerFactory()
         }
     }
 

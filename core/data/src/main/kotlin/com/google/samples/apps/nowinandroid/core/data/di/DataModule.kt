@@ -16,6 +16,7 @@
 
 package com.google.samples.apps.nowinandroid.core.data.di
 
+import androidx.datastore.core.DataStore
 import com.google.samples.apps.nowinandroid.core.data.repository.DefaultRecentSearchRepository
 import com.google.samples.apps.nowinandroid.core.data.repository.DefaultSearchContentsRepository
 import com.google.samples.apps.nowinandroid.core.data.repository.NewsRepository
@@ -30,6 +31,8 @@ import com.google.samples.apps.nowinandroid.core.data.util.ConnectivityManagerNe
 import com.google.samples.apps.nowinandroid.core.data.util.NetworkMonitor
 import com.google.samples.apps.nowinandroid.core.data.util.TimeZoneBroadcastMonitor
 import com.google.samples.apps.nowinandroid.core.data.util.TimeZoneMonitor
+import com.google.samples.apps.nowinandroid.core.datastore.NiaPreferencesDataSource
+import com.google.samples.apps.nowinandroid.core.datastore.UserPreferences
 import com.google.samples.apps.nowinandroid.core.network.di.coroutineScopesKoinModule
 import dagger.Binds
 import dagger.Module
@@ -99,6 +102,8 @@ interface DataModuleBridgeKoin {
     fun topicsRepository() : TopicsRepository
     fun searchContentsRepository() : SearchContentsRepository
     fun recentSearchRepository(): RecentSearchRepository
+    fun niaPreferencesDataSource() : NiaPreferencesDataSource
+    fun dataStore() : DataStore<UserPreferences>
 }
 
 /*
@@ -116,4 +121,6 @@ val dataKoinModule = module {
     single { daggerBridge<DataModuleBridgeKoin>().topicsRepository() }
     single { daggerBridge<DataModuleBridgeKoin>().searchContentsRepository() }
     single { daggerBridge<DataModuleBridgeKoin>().recentSearchRepository() }
+    single { daggerBridge<DataModuleBridgeKoin>().niaPreferencesDataSource() }
+    single { daggerBridge<DataModuleBridgeKoin>().dataStore() }
 }

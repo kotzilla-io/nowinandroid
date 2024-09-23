@@ -17,7 +17,6 @@
 package com.google.samples.apps.nowinandroid.sync.status
 
 import android.util.Log
-import javax.inject.Inject
 
 private const val TAG = "StubSyncSubscriber"
 
