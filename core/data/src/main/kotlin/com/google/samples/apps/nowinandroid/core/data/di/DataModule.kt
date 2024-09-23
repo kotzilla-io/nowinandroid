@@ -46,6 +46,9 @@ object DataBridgeModule : KoinComponent {
 
     @Provides
     fun providesNetworkMonitor() : NetworkMonitor = getKoin().get()
+
+    @Provides
+    fun providesTimeZoneMonitor() : TimeZoneMonitor = getKoin().get()
 }
 
 @Module(includes = [DataBridgeModule::class])
@@ -82,10 +85,11 @@ abstract class DataModule {
 //        networkMonitor: ConnectivityManagerNetworkMonitor,
 //    ): NetworkMonitor
 
-    @Binds
-    internal abstract fun binds(impl: TimeZoneBroadcastMonitor): TimeZoneMonitor
+//    @Binds
+//    internal abstract fun binds(impl: TimeZoneBroadcastMonitor): TimeZoneMonitor
 }
 
 val dataKoinModule = module {
     singleOf(::ConnectivityManagerNetworkMonitor) bind NetworkMonitor::class
+    singleOf(::TimeZoneBroadcastMonitor) bind TimeZoneMonitor::class
 }
