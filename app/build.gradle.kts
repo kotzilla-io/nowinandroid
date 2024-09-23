@@ -132,6 +132,7 @@ dependencies {
     androidTestImplementation(libs.hilt.android.testing)
 
     implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
     implementation(libs.koin.androidx.startup)
     testImplementation(libs.koin.android.test)
 

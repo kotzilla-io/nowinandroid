@@ -96,6 +96,7 @@ abstract class DataModule {
 interface DataModuleBridgeKoin {
     fun newsRepository(): NewsRepository
     fun userDataRepository(): UserDataRepository
+    fun topicsRepository() : TopicsRepository
 }
 
 /*
@@ -110,4 +111,5 @@ val dataKoinModule = module {
 
     single { daggerBridge<DataModuleBridgeKoin>().newsRepository() }
     single { daggerBridge<DataModuleBridgeKoin>().userDataRepository() }
+    single { daggerBridge<DataModuleBridgeKoin>().topicsRepository() }
 }

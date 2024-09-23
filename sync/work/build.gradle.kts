@@ -43,4 +43,6 @@ dependencies {
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.kotlinx.coroutines.guava)
     androidTestImplementation(projects.core.testing)
+
+    implementation(libs.koin.android)
 }
