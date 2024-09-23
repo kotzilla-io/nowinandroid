@@ -16,8 +16,6 @@
 
 package com.google.samples.apps.nowinandroid.core.network.di
 
-import com.google.samples.apps.nowinandroid.core.network.Dispatcher
-import com.google.samples.apps.nowinandroid.core.network.NiaDispatchers.Default
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,6 +23,9 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
+import org.koin.core.component.KoinComponent
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 import javax.inject.Qualifier
 import javax.inject.Singleton
 
@@ -34,11 +35,15 @@ annotation class ApplicationScope
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal object CoroutineScopesModule {
+internal object CoroutineScopesModule : KoinComponent {
+
     @Provides
     @Singleton
     @ApplicationScope
-    fun providesCoroutineScope(
-        @Dispatcher(Default) dispatcher: CoroutineDispatcher,
-    ): CoroutineScope = CoroutineScope(SupervisorJob() + dispatcher)
+    fun providesCoroutineScope(): CoroutineScope = getKoin().get()
+}
+
+val coroutineScopesKoinModule = module {
+    includes(dispatchersKoinModule)
+    single<CoroutineScope> { CoroutineScope(SupervisorJob() + get<CoroutineDispatcher>(named("default"))) }
 }

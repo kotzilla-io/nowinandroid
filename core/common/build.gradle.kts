@@ -20,6 +20,7 @@ plugins {
 
 dependencies {
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.koin.core)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.turbine)
 }
