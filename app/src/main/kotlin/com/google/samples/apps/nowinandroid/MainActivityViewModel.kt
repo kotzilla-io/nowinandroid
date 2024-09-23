@@ -29,8 +29,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
-@HiltViewModel
-class MainActivityViewModel @Inject constructor(
+class MainActivityViewModel(
     userDataRepository: UserDataRepository,
 ) : ViewModel() {
     val uiState: StateFlow<MainActivityUiState> = userDataRepository.userData.map {

@@ -52,6 +52,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -75,7 +76,7 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var userNewsResourceRepository: UserNewsResourceRepository
 
-    private val viewModel: MainActivityViewModel by viewModels()
+    private val viewModel: MainActivityViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
