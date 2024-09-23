@@ -21,7 +21,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -52,7 +51,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -61,8 +62,7 @@ class MainActivity : ComponentActivity() {
     /**
      * Lazily inject [JankStats], which is used to track jank throughout the app.
      */
-    @Inject
-    lateinit var lazyStats: dagger.Lazy<JankStats>
+    val lazyStats by inject<JankStats> { parametersOf(this) }
 
     @Inject
     lateinit var networkMonitor: NetworkMonitor
@@ -154,12 +154,12 @@ class MainActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
-        lazyStats.get().isTrackingEnabled = true
+        lazyStats.isTrackingEnabled = true
     }
 
     override fun onPause() {
         super.onPause()
-        lazyStats.get().isTrackingEnabled = false
+        lazyStats.isTrackingEnabled = false
     }
 }
 
