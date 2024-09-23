@@ -36,23 +36,27 @@ object SyncModuleBridgeHilt : KoinComponent {
 
     @Provides
     fun providesSyncManager() : SyncManager = getKoin().get()
+
+    @Provides
+    fun providesSyncSubscriber(): SyncSubscriber = getKoin().get()
 }
 
-@Module(includes = [SyncModuleBridgeHilt::class])
-@InstallIn(SingletonComponent::class)
-abstract class SyncModule {
-
-//    @Binds
-//    internal abstract fun bindsSyncStatusMonitor(
-//        syncStatusMonitor: WorkManagerSyncManager,
-//    ): SyncManager
-
-    @Binds
-    internal abstract fun bindsSyncSubscriber(
-        syncSubscriber: StubSyncSubscriber,
-    ): SyncSubscriber
-}
+//@Module(includes = [SyncModuleBridgeHilt::class])
+//@InstallIn(SingletonComponent::class)
+//abstract class SyncModule {
+//
+////    @Binds
+////    internal abstract fun bindsSyncStatusMonitor(
+////        syncStatusMonitor: WorkManagerSyncManager,
+////    ): SyncManager
+//
+////    @Binds
+////    internal abstract fun bindsSyncSubscriber(
+////        syncSubscriber: StubSyncSubscriber,
+////    ): SyncSubscriber
+//}
 
 val syncKoinModule = module {
     singleOf(::WorkManagerSyncManager) bind SyncManager::class
+    singleOf(::StubSyncSubscriber) bind SyncSubscriber::class
 }
