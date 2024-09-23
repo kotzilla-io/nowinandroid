@@ -64,8 +64,7 @@ class MainActivity : ComponentActivity() {
      */
     val lazyStats by inject<JankStats> { parametersOf(this) }
 
-    @Inject
-    lateinit var networkMonitor: NetworkMonitor
+    val networkMonitor: NetworkMonitor by inject()
 
     @Inject
     lateinit var timeZoneMonitor: TimeZoneMonitor
