@@ -35,6 +35,7 @@ dependencies {
     api(projects.core.database)
     api(projects.core.datastore)
     api(projects.core.network)
+    api(libs.koin.core)
 
     implementation(projects.core.analytics)
     implementation(projects.core.notifications)

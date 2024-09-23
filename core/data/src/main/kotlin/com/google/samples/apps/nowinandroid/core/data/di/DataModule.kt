@@ -32,10 +32,23 @@ import com.google.samples.apps.nowinandroid.core.data.util.TimeZoneBroadcastMoni
 import com.google.samples.apps.nowinandroid.core.data.util.TimeZoneMonitor
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import org.koin.core.component.KoinComponent
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.bind
+import org.koin.dsl.module
 
 @Module
+@InstallIn(SingletonComponent::class)
+object DataBridgeModule : KoinComponent {
+
+    @Provides
+    fun providesNetworkMonitor() : NetworkMonitor = getKoin().get()
+}
+
+@Module(includes = [DataBridgeModule::class])
 @InstallIn(SingletonComponent::class)
 abstract class DataModule {
 
@@ -64,11 +77,15 @@ abstract class DataModule {
         searchContentsRepository: DefaultSearchContentsRepository,
     ): SearchContentsRepository
 
-    @Binds
-    internal abstract fun bindsNetworkMonitor(
-        networkMonitor: ConnectivityManagerNetworkMonitor,
-    ): NetworkMonitor
+//    @Binds
+//    internal abstract fun bindsNetworkMonitor(
+//        networkMonitor: ConnectivityManagerNetworkMonitor,
+//    ): NetworkMonitor
 
     @Binds
     internal abstract fun binds(impl: TimeZoneBroadcastMonitor): TimeZoneMonitor
+}
+
+val dataKoinModule = module {
+    singleOf(::ConnectivityManagerNetworkMonitor) bind NetworkMonitor::class
 }
