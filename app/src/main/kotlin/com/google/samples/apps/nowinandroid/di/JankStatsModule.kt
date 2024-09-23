@@ -21,9 +21,7 @@ import android.util.Log
 import androidx.metrics.performance.JankStats
 import androidx.metrics.performance.JankStats.OnFrameListener
 import com.google.samples.apps.nowinandroid.MainActivityViewModel
-import com.google.samples.apps.nowinandroid.core.data.di.dataKoinModule
 import com.google.samples.apps.nowinandroid.core.data.repository.UserDataRepository
-import com.google.samples.apps.nowinandroid.core.network.di.coroutineScopesKoinModule
 import dagger.hilt.EntryPoint
 import dagger.hilt.EntryPoints
 import dagger.hilt.InstallIn
@@ -48,10 +46,6 @@ val jankStatsKoinModule = module {
     single { daggerBridge<DaggerBridge>().getUserDataRepository() }
 
     factory { (activity : Activity) -> JankStats.createAndTrack(activity.window, providesOnFrameListener()) }
-}
-
-val appModule = module {
-    includes(jankStatsKoinModule, coroutineScopesKoinModule, dataKoinModule)
 }
 
 fun providesOnFrameListener(): OnFrameListener = OnFrameListener { frameData ->

@@ -66,11 +66,9 @@ class MainActivity : ComponentActivity() {
 
     val networkMonitor: NetworkMonitor by inject()
 
-    @Inject
-    lateinit var timeZoneMonitor: TimeZoneMonitor
+    val timeZoneMonitor: TimeZoneMonitor by inject()
 
-    @Inject
-    lateinit var analyticsHelper: AnalyticsHelper
+    val analyticsHelper: AnalyticsHelper by inject()
 
     @Inject
     lateinit var userNewsResourceRepository: UserNewsResourceRepository
