@@ -43,7 +43,7 @@ import org.koin.dsl.module
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DataBridgeModule : KoinComponent {
+object DataModuleBridgeDagger : KoinComponent {
 
     @Provides
     fun providesNetworkMonitor() : NetworkMonitor = getKoin().get()
@@ -52,7 +52,7 @@ object DataBridgeModule : KoinComponent {
     fun providesTimeZoneMonitor() : TimeZoneMonitor = getKoin().get()
 }
 
-@Module(includes = [DataBridgeModule::class])
+@Module(includes = [DataModuleBridgeDagger::class])
 @InstallIn(SingletonComponent::class)
 abstract class DataModule {
 
@@ -92,7 +92,7 @@ abstract class DataModule {
 
 @InstallIn(SingletonComponent::class)
 @EntryPoint
-interface DataModuleBridge {
+interface DataModuleBridgeKoin {
     fun newsRepository(): NewsRepository
     fun userDataRepository(): UserDataRepository
 }
@@ -107,6 +107,6 @@ val dataKoinModule = module {
     singleOf(::ConnectivityManagerNetworkMonitor) bind NetworkMonitor::class
     singleOf(::TimeZoneBroadcastMonitor) bind TimeZoneMonitor::class
 
-    single { daggerBridge<DataModuleBridge>().newsRepository() }
-    single { daggerBridge<DataModuleBridge>().userDataRepository() }
+    single { daggerBridge<DataModuleBridgeKoin>().newsRepository() }
+    single { daggerBridge<DataModuleBridgeKoin>().userDataRepository() }
 }
