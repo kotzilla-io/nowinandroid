@@ -40,8 +40,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class TopicViewModel @Inject constructor(
+class TopicViewModel(
     savedStateHandle: SavedStateHandle,
     private val userDataRepository: UserDataRepository,
     topicsRepository: TopicsRepository,
