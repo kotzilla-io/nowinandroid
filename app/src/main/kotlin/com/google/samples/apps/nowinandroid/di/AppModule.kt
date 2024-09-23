@@ -19,8 +19,9 @@ package com.google.samples.apps.nowinandroid.di
 import com.google.samples.apps.nowinandroid.core.analytics.analyticsKoinModule
 import com.google.samples.apps.nowinandroid.core.data.di.dataKoinModule
 import com.google.samples.apps.nowinandroid.core.network.di.coroutineScopesKoinModule
+import com.google.samples.apps.nowinandroid.feature.foryou.forYouModule
 import org.koin.dsl.module
 
 val appModule = module {
-    includes(jankStatsKoinModule, coroutineScopesKoinModule, dataKoinModule, analyticsKoinModule)
+    includes(dataKoinModule, analyticsKoinModule, jankStatsKoinModule, forYouModule)
 }

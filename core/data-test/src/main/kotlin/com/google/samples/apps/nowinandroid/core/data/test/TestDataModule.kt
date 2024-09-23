@@ -65,11 +65,11 @@ internal interface TestDataModule {
         searchContentsRepository: FakeSearchContentsRepository,
     ): SearchContentsRepository
 
-    @Binds
-    fun bindsNetworkMonitor(
-        networkMonitor: AlwaysOnlineNetworkMonitor,
-    ): NetworkMonitor
-
-    @Binds
-    fun binds(impl: DefaultZoneIdTimeZoneMonitor): TimeZoneMonitor
+//    @Binds
+//    fun bindsNetworkMonitor(
+//        networkMonitor: AlwaysOnlineNetworkMonitor,
+//    ): NetworkMonitor
+//
+//    @Binds
+//    fun binds(impl: DefaultZoneIdTimeZoneMonitor): TimeZoneMonitor
 }

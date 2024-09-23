@@ -41,8 +41,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class ForYouViewModel @Inject constructor(
+class ForYouViewModel(
     private val savedStateHandle: SavedStateHandle,
     syncManager: SyncManager,
     private val analyticsHelper: AnalyticsHelper,

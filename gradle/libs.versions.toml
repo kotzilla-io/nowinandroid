@@ -153,6 +153,7 @@ turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine
 koin-core = {group = "io.insert-koin", name = "koin-core", version.ref = "koin"}
 koin-test = {group = "io.insert-koin", name = "koin-test", version.ref = "koin"}
 koin-android = {group = "io.insert-koin", name = "koin-android", version.ref = "koin"}
+koin-android-test = {group = "io.insert-koin", name = "koin-android-test", version.ref = "koin"}
 koin-androidx-startup = {group = "io.insert-koin", name = "koin-androidx-startup", version.ref = "koin"}
 koin-compose-viewmodel = {group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin"}
 

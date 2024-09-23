@@ -133,7 +133,7 @@ dependencies {
 
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.startup)
-
+    testImplementation(libs.koin.android.test)
 
     baselineProfile(projects.benchmarks)
 }

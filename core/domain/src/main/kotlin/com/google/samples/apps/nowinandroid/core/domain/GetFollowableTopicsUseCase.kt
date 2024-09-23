@@ -28,7 +28,7 @@ import javax.inject.Inject
 /**
  * A use case which obtains a list of topics with their followed state.
  */
-class GetFollowableTopicsUseCase @Inject constructor(
+class GetFollowableTopicsUseCase(
     private val topicsRepository: TopicsRepository,
     private val userDataRepository: UserDataRepository,
 ) {
