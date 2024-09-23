@@ -18,16 +18,23 @@ package com.google.samples.apps.nowinandroid.core.data.di
 
 import com.google.samples.apps.nowinandroid.core.data.repository.CompositeUserNewsResourceRepository
 import com.google.samples.apps.nowinandroid.core.data.repository.UserNewsResourceRepository
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import org.koin.core.component.KoinComponent
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.bind
+import org.koin.dsl.module
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal interface UserNewsResourceRepositoryModule {
-    @Binds
-    fun bindsUserNewsResourceRepository(
-        userDataRepository: CompositeUserNewsResourceRepository,
-    ): UserNewsResourceRepository
+object UserNewsResourceRepositoryModule : KoinComponent {
+
+    @Provides
+    fun providesUserNewsResourceRepository(): UserNewsResourceRepository = getKoin().get()
+}
+
+val userNewsResourceRepositoryKoinModule = module {
+    singleOf(::CompositeUserNewsResourceRepository) bind UserNewsResourceRepository::class
 }

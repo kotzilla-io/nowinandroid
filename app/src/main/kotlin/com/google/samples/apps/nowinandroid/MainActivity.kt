@@ -54,8 +54,8 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import javax.inject.Inject
 
+// To keep for ViewModels
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
@@ -70,8 +70,7 @@ class MainActivity : ComponentActivity() {
 
     val analyticsHelper: AnalyticsHelper by inject()
 
-    @Inject
-    lateinit var userNewsResourceRepository: UserNewsResourceRepository
+    val userNewsResourceRepository: UserNewsResourceRepository by inject()
 
     private val viewModel: MainActivityViewModel by viewModel()
 

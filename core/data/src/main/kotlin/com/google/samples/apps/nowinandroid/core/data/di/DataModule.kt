@@ -33,6 +33,7 @@ import com.google.samples.apps.nowinandroid.core.data.util.TimeZoneMonitor
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import org.koin.core.component.KoinComponent
@@ -89,7 +90,23 @@ abstract class DataModule {
 //    internal abstract fun binds(impl: TimeZoneBroadcastMonitor): TimeZoneMonitor
 }
 
+@InstallIn(SingletonComponent::class)
+@EntryPoint
+interface DataModuleBridge {
+    fun newsRepository(): NewsRepository
+    fun userDataRepository(): UserDataRepository
+}
+
+/*
+val newsRepository: NewsRepository,
+val userDataRepository: UserDataRepository,
+*/
+
 val dataKoinModule = module {
+    includes(userNewsResourceRepositoryKoinModule)
     singleOf(::ConnectivityManagerNetworkMonitor) bind NetworkMonitor::class
     singleOf(::TimeZoneBroadcastMonitor) bind TimeZoneMonitor::class
+
+    single { daggerBridge<DataModuleBridge>().newsRepository() }
+    single { daggerBridge<DataModuleBridge>().userDataRepository() }
 }

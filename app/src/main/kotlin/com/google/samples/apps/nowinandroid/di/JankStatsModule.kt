@@ -21,30 +21,11 @@ import android.util.Log
 import androidx.metrics.performance.JankStats
 import androidx.metrics.performance.JankStats.OnFrameListener
 import com.google.samples.apps.nowinandroid.MainActivityViewModel
-import com.google.samples.apps.nowinandroid.core.data.repository.UserDataRepository
-import dagger.hilt.EntryPoint
-import dagger.hilt.EntryPoints
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModelOf
-import org.koin.core.scope.Scope
 import org.koin.dsl.module
-
-@InstallIn(SingletonComponent::class)
-@EntryPoint
-interface DaggerBridge {
-    fun getUserDataRepository(): UserDataRepository
-}
-
-inline fun <reified T> Scope.daggerBridge(): T {
-    return EntryPoints.get(androidContext().applicationContext, T::class.java)
-}
 
 val jankStatsKoinModule = module {
     viewModelOf(::MainActivityViewModel)
-    single { daggerBridge<DaggerBridge>().getUserDataRepository() }
-
     factory { (activity : Activity) -> JankStats.createAndTrack(activity.window, providesOnFrameListener()) }
 }
 
