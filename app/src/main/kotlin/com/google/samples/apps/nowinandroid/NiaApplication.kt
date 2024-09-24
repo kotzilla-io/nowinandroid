@@ -44,10 +44,14 @@ class NiaApplication : Application(), ImageLoaderFactory {
     val imageLoader: ImageLoader by inject()
     val profileVerifierLogger: ProfileVerifierLogger by inject()
 
+    companion object {
+        var startTime: Long = 0
+    }
+
     init {
         onKoinStartup {
             androidContext(this@NiaApplication)
-            androidLogger(DEBUG)
+//            androidLogger(DEBUG)
             modules(appModule)
             workManagerFactory()
         }
@@ -55,6 +59,8 @@ class NiaApplication : Application(), ImageLoaderFactory {
 
     override fun onCreate() {
         super.onCreate()
+        startTime = System.currentTimeMillis()
+
         // Initialize Sync; the system responsible for keeping data in the app up to date.
         Sync.initialize(context = this)
         profileVerifierLogger()
