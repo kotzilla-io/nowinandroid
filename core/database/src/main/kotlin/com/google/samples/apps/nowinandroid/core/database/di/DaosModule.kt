@@ -40,9 +40,7 @@ internal object DaosModule : KoinComponent {
 
     @Provides
     fun providesNewsResourceDao(): NewsResourceDao = getKoin().get()
-    
-    @Provides
-    fun providesRecentSearchQueryDao(): RecentSearchQueryDao = getKoin().get()
+
 }
 
 val daosModule = module {

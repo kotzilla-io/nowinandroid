@@ -75,12 +75,6 @@ abstract class DataModule {
     internal abstract fun bindsUserDataRepository(
         userDataRepository: OfflineFirstUserDataRepository,
     ): UserDataRepository
-
-    @Binds
-    internal abstract fun bindsRecentSearchRepository(
-        recentSearchRepository: DefaultRecentSearchRepository,
-    ): RecentSearchRepository
-
 }
 
 @InstallIn(SingletonComponent::class)
@@ -89,7 +83,6 @@ interface DataModuleBridgeKoin {
     fun newsRepository(): NewsRepository
     fun userDataRepository(): UserDataRepository
     fun topicsRepository() : TopicsRepository
-    fun recentSearchRepository(): RecentSearchRepository
     fun niaPreferencesDataSource() : NiaPreferencesDataSource
     fun dataStore() : DataStore<UserPreferences>
 }
@@ -99,11 +92,11 @@ val dataKoinModule = module {
     singleOf(::ConnectivityManagerNetworkMonitor) bind NetworkMonitor::class
     singleOf(::TimeZoneBroadcastMonitor) bind TimeZoneMonitor::class
     singleOf(::DefaultSearchContentsRepository) bind SearchContentsRepository::class
+    singleOf(::DefaultRecentSearchRepository) bind RecentSearchRepository::class
 
     single { daggerBridge<DataModuleBridgeKoin>().newsRepository() }
     single { daggerBridge<DataModuleBridgeKoin>().userDataRepository() }
     single { daggerBridge<DataModuleBridgeKoin>().topicsRepository() }
-    single { daggerBridge<DataModuleBridgeKoin>().recentSearchRepository() }
     single { daggerBridge<DataModuleBridgeKoin>().niaPreferencesDataSource() }
     single { daggerBridge<DataModuleBridgeKoin>().dataStore() }
 }
