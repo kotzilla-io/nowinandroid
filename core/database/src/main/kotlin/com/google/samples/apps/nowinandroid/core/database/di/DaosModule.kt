@@ -17,16 +17,6 @@
 package com.google.samples.apps.nowinandroid.core.database.di
 
 import com.google.samples.apps.nowinandroid.core.database.NiaDatabase
-import com.google.samples.apps.nowinandroid.core.database.dao.NewsResourceDao
-import com.google.samples.apps.nowinandroid.core.database.dao.NewsResourceFtsDao
-import com.google.samples.apps.nowinandroid.core.database.dao.RecentSearchQueryDao
-import com.google.samples.apps.nowinandroid.core.database.dao.TopicDao
-import com.google.samples.apps.nowinandroid.core.database.dao.TopicFtsDao
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import org.koin.core.component.KoinComponent
 import org.koin.core.scope.Scope
 import org.koin.dsl.module
 
