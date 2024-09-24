@@ -16,10 +16,10 @@
 
 package com.google.samples.apps.nowinandroid.core.data.di
 
-import dagger.hilt.EntryPoints
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.scope.Scope
-
-inline fun <reified T> Scope.daggerBridge(): T {
-    return EntryPoints.get(androidContext().applicationContext, T::class.java)
-}
+//import dagger.hilt.EntryPoints
+//import org.koin.android.ext.koin.androidContext
+//import org.koin.core.scope.Scope
+//
+//inline fun <reified T> Scope.daggerBridge(): T {
+//    return EntryPoints.get(androidContext().applicationContext, T::class.java)
+//}

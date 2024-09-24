@@ -17,8 +17,6 @@
 package com.google.samples.apps.nowinandroid.core.network.demo
 
 import JvmUnitTestDemoAssetManager
-import com.google.samples.apps.nowinandroid.core.network.Dispatcher
-import com.google.samples.apps.nowinandroid.core.network.NiaDispatchers.IO
 import com.google.samples.apps.nowinandroid.core.network.NiaNetworkDataSource
 import com.google.samples.apps.nowinandroid.core.network.model.NetworkChangeList
 import com.google.samples.apps.nowinandroid.core.network.model.NetworkNewsResource

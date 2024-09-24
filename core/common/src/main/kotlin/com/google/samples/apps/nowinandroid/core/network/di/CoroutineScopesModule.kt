@@ -16,32 +16,25 @@
 
 package com.google.samples.apps.nowinandroid.core.network.di
 
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
-import org.koin.core.component.KoinComponent
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import javax.inject.Qualifier
-import javax.inject.Singleton
 
-@Retention(AnnotationRetention.RUNTIME)
-@Qualifier
-annotation class ApplicationScope
-
-@Module
-@InstallIn(SingletonComponent::class)
-internal object CoroutineScopesModule : KoinComponent {
-
-    @Provides
-    @Singleton
-    @ApplicationScope
-    fun providesCoroutineScope(): CoroutineScope = getKoin().get()
-}
+//@Retention(AnnotationRetention.RUNTIME)
+//@Qualifier
+//annotation class ApplicationScope
+//
+//@Module
+//@InstallIn(SingletonComponent::class)
+//internal object CoroutineScopesModule : KoinComponent {
+//
+//    @Provides
+//    @Singleton
+//    @ApplicationScope
+//    fun providesCoroutineScope(): CoroutineScope = getKoin().get()
+//}
 
 val coroutineScopesKoinModule = module {
     includes(dispatchersKoinModule)

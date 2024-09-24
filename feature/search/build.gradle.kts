@@ -28,10 +28,10 @@ dependencies {
     implementation(projects.core.data)
     implementation(projects.core.domain)
 
-    testImplementation(projects.core.testing)
+//    testImplementation(projects.core.testing)
 
     androidTestImplementation(libs.bundles.androidx.compose.ui.test)
-    androidTestImplementation(projects.core.testing)
+//    androidTestImplementation(projects.core.testing)
 
     implementation(libs.koin.compose.viewmodel)
 }

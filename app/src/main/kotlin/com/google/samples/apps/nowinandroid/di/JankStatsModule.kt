@@ -22,12 +22,15 @@ import androidx.metrics.performance.JankStats
 import androidx.metrics.performance.JankStats.OnFrameListener
 import com.google.samples.apps.nowinandroid.MainActivityViewModel
 import com.google.samples.apps.nowinandroid.ui.interests2pane.Interests2PaneViewModel
+import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
+import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 val jankStatsKoinModule = module {
     viewModelOf(::MainActivityViewModel)
     viewModelOf(::Interests2PaneViewModel)
+    singleOf(::ProfileVerifierLogger)
     factory { (activity : Activity) -> JankStats.createAndTrack(activity.window, providesOnFrameListener()) }
 }
 

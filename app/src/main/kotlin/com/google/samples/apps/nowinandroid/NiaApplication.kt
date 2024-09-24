@@ -23,7 +23,6 @@ import com.google.samples.apps.nowinandroid.di.appModule
 import com.google.samples.apps.nowinandroid.di.jankStatsKoinModule
 import com.google.samples.apps.nowinandroid.sync.initializers.Sync
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
-import dagger.hilt.android.HiltAndroidApp
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -37,15 +36,13 @@ import javax.inject.Inject
 /**
  * [Application] class for NiA
  */
-@HiltAndroidApp
+//@HiltAndroidApp
 @OptIn(KoinExperimentalAPI::class)
 class NiaApplication : Application(), ImageLoaderFactory {
 
 
     val imageLoader: ImageLoader by inject()
-
-    @Inject
-    lateinit var profileVerifierLogger: ProfileVerifierLogger
+    val profileVerifierLogger: ProfileVerifierLogger by inject()
 
     init {
         onKoinStartup {

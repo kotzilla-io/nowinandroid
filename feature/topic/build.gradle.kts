@@ -28,9 +28,9 @@ dependencies {
     implementation(projects.core.data)
     implementation(libs.koin.compose.viewmodel)
 
-    testImplementation(projects.core.testing)
+//    testImplementation(projects.core.testing)
     testImplementation(libs.robolectric)
 
     androidTestImplementation(libs.bundles.androidx.compose.ui.test)
-    androidTestImplementation(projects.core.testing)
+//    androidTestImplementation(projects.core.testing)
 }

@@ -16,31 +16,23 @@
 
 package com.google.samples.apps.nowinandroid.core.network.di
 
-import com.google.samples.apps.nowinandroid.core.network.Dispatcher
-import com.google.samples.apps.nowinandroid.core.network.NiaDispatchers.Default
-import com.google.samples.apps.nowinandroid.core.network.NiaDispatchers.IO
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import org.koin.core.component.KoinComponent
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-object DispatchersModule : KoinComponent {
-
-    @Provides
-    @Dispatcher(IO)
-    fun providesIODispatcher(): CoroutineDispatcher = getKoin().get()
-
+//@Module
+//@InstallIn(SingletonComponent::class)
+//object DispatchersModule : KoinComponent {
+//
 //    @Provides
-//    @Dispatcher(Default)
-//    fun providesDefaultDispatcher(): CoroutineDispatcher = Dispatchers.Default
-}
+//    @Dispatcher(IO)
+//    fun providesIODispatcher(): CoroutineDispatcher = getKoin().get()
+//
+////    @Provides
+////    @Dispatcher(Default)
+////    fun providesDefaultDispatcher(): CoroutineDispatcher = Dispatchers.Default
+//}
 
 val dispatchersKoinModule = module {
     single<CoroutineDispatcher> { Dispatchers.IO }

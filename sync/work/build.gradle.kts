@@ -42,7 +42,7 @@ dependencies {
     androidTestImplementation(libs.androidx.work.testing)
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.kotlinx.coroutines.guava)
-    androidTestImplementation(projects.core.testing)
+//    androidTestImplementation(projects.core.testing)
 
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.workmanager)

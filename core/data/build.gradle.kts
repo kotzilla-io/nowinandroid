@@ -16,7 +16,7 @@
 plugins {
     alias(libs.plugins.nowinandroid.android.library)
     alias(libs.plugins.nowinandroid.android.library.jacoco)
-    alias(libs.plugins.nowinandroid.hilt)
+//    alias(libs.plugins.nowinandroid.hilt)
     id("kotlinx-serialization")
 }
 
@@ -42,6 +42,6 @@ dependencies {
 
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotlinx.serialization.json)
-    testImplementation(projects.core.datastoreTest)
-    testImplementation(projects.core.testing)
+//    testImplementation(projects.core.datastoreTest)
+//    testImplementation(projects.core.testing)
 }

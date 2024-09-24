@@ -47,7 +47,6 @@ import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand
 import com.google.samples.apps.nowinandroid.core.ui.LocalTimeZone
 import com.google.samples.apps.nowinandroid.ui.NiaApp
 import com.google.samples.apps.nowinandroid.ui.rememberNiaAppState
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -57,7 +56,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 // To keep for ViewModels
-@AndroidEntryPoint
+//@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     /**
