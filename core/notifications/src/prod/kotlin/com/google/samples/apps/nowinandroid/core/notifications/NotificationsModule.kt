@@ -16,16 +16,19 @@
 
 package com.google.samples.apps.nowinandroid.core.notifications
 
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.bind
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-internal abstract class NotificationsModule {
-    @Binds
-    abstract fun bindNotifier(
-        notifier: SystemTrayNotifier,
-    ): Notifier
+//@Module
+//@InstallIn(SingletonComponent::class)
+//internal abstract class NotificationsModule {
+//    @Binds
+//    abstract fun bindNotifier(
+//        notifier: SystemTrayNotifier,
+//    ): Notifier
+//}
+
+val notificationsModule = module {
+    singleOf(::SystemTrayNotifier) bind Notifier::class
 }

@@ -35,11 +35,9 @@ import com.google.samples.apps.nowinandroid.core.database.di.daosModule
 import com.google.samples.apps.nowinandroid.core.datastore.di.dataStoreModule
 import com.google.samples.apps.nowinandroid.core.network.di.coroutineScopesKoinModule
 import com.google.samples.apps.nowinandroid.core.network.di.flavoredNetworkModule
-import com.google.samples.apps.nowinandroid.core.network.di.networkModule
-import com.google.samples.apps.nowinandroid.core.notifications.Notifier
+import com.google.samples.apps.nowinandroid.core.notifications.notificationsModule
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import org.koin.core.component.KoinComponent
@@ -65,14 +63,8 @@ object DataModuleBridgeDagger : KoinComponent {
 abstract class DataModule {
 }
 
-@InstallIn(SingletonComponent::class)
-@EntryPoint
-interface DataModuleBridgeKoin {
-    fun notifier(): Notifier
-}
-
 val dataKoinModule = module {
-    includes(userNewsResourceRepositoryKoinModule, coroutineScopesKoinModule, daosModule, dataStoreModule, flavoredNetworkModule)
+    includes(userNewsResourceRepositoryKoinModule, coroutineScopesKoinModule, daosModule, dataStoreModule, flavoredNetworkModule, notificationsModule)
     singleOf(::ConnectivityManagerNetworkMonitor) bind NetworkMonitor::class
     singleOf(::TimeZoneBroadcastMonitor) bind TimeZoneMonitor::class
     singleOf(::DefaultSearchContentsRepository) bind SearchContentsRepository::class
@@ -80,6 +72,4 @@ val dataKoinModule = module {
     singleOf(::OfflineFirstNewsRepository) bind NewsRepository::class
     singleOf(::OfflineFirstTopicsRepository) bind TopicsRepository::class
     singleOf(::OfflineFirstUserDataRepository) bind UserDataRepository::class
-
-    single { daggerBridge<DataModuleBridgeKoin>().notifier() }
 }
