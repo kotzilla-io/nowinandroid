@@ -30,18 +30,18 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.scope.Scope
 import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-internal object DaosModule : KoinComponent {
-
-    // Bridged to Koin
-    @Provides
-    fun providesTopicsDao(): TopicDao = getKoin().get()
-
-    @Provides
-    fun providesNewsResourceDao(): NewsResourceDao = getKoin().get()
-
-}
+//@Module
+//@InstallIn(SingletonComponent::class)
+//internal object DaosModule : KoinComponent {
+//
+////    // Bridged to Koin
+////    @Provides
+////    fun providesTopicsDao(): TopicDao = getKoin().get()
+////
+////    @Provides
+////    fun providesNewsResourceDao(): NewsResourceDao = getKoin().get()
+//
+//}
 
 val daosModule = module {
     includes(databaseModule)

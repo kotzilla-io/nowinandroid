@@ -113,7 +113,7 @@ dependencies {
 
     kspTest(libs.hilt.compiler)
 
-    testImplementation(projects.core.dataTest)
+//    testImplementation(projects.core.dataTest)
     testImplementation(libs.hilt.android.testing)
     testImplementation(projects.sync.syncTest)
     testImplementation(libs.kotlin.test)
@@ -124,7 +124,7 @@ dependencies {
 
     androidTestImplementation(kotlin("test"))
     androidTestImplementation(projects.core.testing)
-    androidTestImplementation(projects.core.dataTest)
+//    androidTestImplementation(projects.core.dataTest)
     androidTestImplementation(projects.core.datastoreTest)
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.navigation.testing)

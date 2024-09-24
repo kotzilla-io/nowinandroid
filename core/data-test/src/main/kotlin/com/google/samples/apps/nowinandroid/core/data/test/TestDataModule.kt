@@ -31,45 +31,38 @@ import com.google.samples.apps.nowinandroid.core.data.util.NetworkMonitor
 import com.google.samples.apps.nowinandroid.core.data.util.TimeZoneMonitor
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
+import org.koin.core.component.KoinComponent
 
 @Module
 @TestInstallIn(
     components = [SingletonComponent::class],
     replaces = [DataModule::class],
 )
-internal interface TestDataModule {
-    @Binds
-    fun bindsTopicRepository(
-        fakeTopicsRepository: FakeTopicsRepository,
-    ): TopicsRepository
+object TestDataModule : KoinComponent {
+    
+    @Provides
+    fun bindsTopicRepository(): TopicsRepository = getKoin().get()
 
-    @Binds
-    fun bindsNewsResourceRepository(
-        fakeNewsRepository: FakeNewsRepository,
-    ): NewsRepository
+    @Provides
+    fun bindsNewsResourceRepository(): NewsRepository = getKoin().get()
 
-    @Binds
-    fun bindsUserDataRepository(
-        userDataRepository: FakeUserDataRepository,
-    ): UserDataRepository
+    @Provides
+    fun bindsUserDataRepository(): UserDataRepository = getKoin().get()
 
-    @Binds
-    fun bindsRecentSearchRepository(
-        recentSearchRepository: FakeRecentSearchRepository,
-    ): RecentSearchRepository
+    @Provides
+    fun bindsRecentSearchRepository(): RecentSearchRepository = getKoin().get()
 
-    @Binds
-    fun bindsSearchContentsRepository(
-        searchContentsRepository: FakeSearchContentsRepository,
-    ): SearchContentsRepository
+    @Provides
+    fun bindsSearchContentsRepository(): SearchContentsRepository = getKoin().get()
 
-//    @Binds
+//    @Provides
 //    fun bindsNetworkMonitor(
 //        networkMonitor: AlwaysOnlineNetworkMonitor,
 //    ): NetworkMonitor
 //
-//    @Binds
+//    @Provides
 //    fun binds(impl: DefaultZoneIdTimeZoneMonitor): TimeZoneMonitor
 }
