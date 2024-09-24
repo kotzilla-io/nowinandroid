@@ -27,13 +27,13 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-object UserNewsResourceRepositoryModule : KoinComponent {
-
-    @Provides
-    fun providesUserNewsResourceRepository(): UserNewsResourceRepository = getKoin().get()
-}
+//@Module
+//@InstallIn(SingletonComponent::class)
+//object UserNewsResourceRepositoryModule : KoinComponent {
+//
+//    @Provides
+//    fun providesUserNewsResourceRepository(): UserNewsResourceRepository = getKoin().get()
+//}
 
 val userNewsResourceRepositoryKoinModule = module {
     singleOf(::CompositeUserNewsResourceRepository) bind UserNewsResourceRepository::class
