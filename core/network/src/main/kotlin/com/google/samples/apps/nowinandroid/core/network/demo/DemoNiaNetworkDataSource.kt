@@ -28,13 +28,12 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
-import javax.inject.Inject
 
 /**
  * [NiaNetworkDataSource] implementation that provides static news resources to aid development
  */
-class DemoNiaNetworkDataSource @Inject constructor(
-    @Dispatcher(IO) private val ioDispatcher: CoroutineDispatcher,
+class DemoNiaNetworkDataSource(
+    private val ioDispatcher: CoroutineDispatcher,
     private val networkJson: Json,
     private val assets: DemoAssetManager = JvmUnitTestDemoAssetManager,
 ) : NiaNetworkDataSource {

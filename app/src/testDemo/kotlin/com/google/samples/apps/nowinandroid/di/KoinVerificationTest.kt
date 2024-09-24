@@ -23,6 +23,8 @@ class KoinVerificationTest {
 
     @Test
     fun verify(){
-        appModule.androidVerify()
+        appModule.androidVerify(
+            extraTypes = listOf(Lazy::class)
+        )
     }
 }

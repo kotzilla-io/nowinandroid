@@ -30,8 +30,6 @@ import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Query
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Retrofit API declaration for NIA Network API
@@ -71,10 +69,9 @@ private data class NetworkResponse<T>(
 /**
  * [Retrofit] backed [NiaNetworkDataSource]
  */
-@Singleton
-internal class RetrofitNiaNetwork @Inject constructor(
+internal class RetrofitNiaNetwork(
     networkJson: Json,
-    okhttpCallFactory: dagger.Lazy<Call.Factory>,
+    okhttpCallFactory: Lazy<Call.Factory>,
 ) : NiaNetworkDataSource {
 
     private val networkApi = trace("RetrofitNiaNetwork") {
@@ -82,7 +79,7 @@ internal class RetrofitNiaNetwork @Inject constructor(
             .baseUrl(NIA_BASE_URL)
             // We use callFactory lambda here with dagger.Lazy<Call.Factory>
             // to prevent initializing OkHttp on the main thread.
-            .callFactory { okhttpCallFactory.get().newCall(it) }
+            .callFactory { okhttpCallFactory.value.newCall(it) }
             .addConverterFactory(
                 networkJson.asConverterFactory("application/json".toMediaType()),
             )

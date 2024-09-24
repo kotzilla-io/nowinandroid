@@ -32,13 +32,11 @@ import com.google.samples.apps.nowinandroid.core.data.util.NetworkMonitor
 import com.google.samples.apps.nowinandroid.core.data.util.TimeZoneBroadcastMonitor
 import com.google.samples.apps.nowinandroid.core.data.util.TimeZoneMonitor
 import com.google.samples.apps.nowinandroid.core.database.di.daosModule
-import com.google.samples.apps.nowinandroid.core.datastore.NiaPreferencesDataSource
-import com.google.samples.apps.nowinandroid.core.datastore.UserPreferences
 import com.google.samples.apps.nowinandroid.core.datastore.di.dataStoreModule
-import com.google.samples.apps.nowinandroid.core.network.NiaNetworkDataSource
 import com.google.samples.apps.nowinandroid.core.network.di.coroutineScopesKoinModule
+import com.google.samples.apps.nowinandroid.core.network.di.flavoredNetworkModule
+import com.google.samples.apps.nowinandroid.core.network.di.networkModule
 import com.google.samples.apps.nowinandroid.core.notifications.Notifier
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.EntryPoint
@@ -70,12 +68,11 @@ abstract class DataModule {
 @InstallIn(SingletonComponent::class)
 @EntryPoint
 interface DataModuleBridgeKoin {
-    fun niaNetworkDataSource(): NiaNetworkDataSource
     fun notifier(): Notifier
 }
 
 val dataKoinModule = module {
-    includes(userNewsResourceRepositoryKoinModule, coroutineScopesKoinModule, daosModule, dataStoreModule)
+    includes(userNewsResourceRepositoryKoinModule, coroutineScopesKoinModule, daosModule, dataStoreModule, flavoredNetworkModule)
     singleOf(::ConnectivityManagerNetworkMonitor) bind NetworkMonitor::class
     singleOf(::TimeZoneBroadcastMonitor) bind TimeZoneMonitor::class
     singleOf(::DefaultSearchContentsRepository) bind SearchContentsRepository::class
@@ -85,5 +82,4 @@ val dataKoinModule = module {
     singleOf(::OfflineFirstUserDataRepository) bind UserDataRepository::class
 
     single { daggerBridge<DataModuleBridgeKoin>().notifier() }
-    single { daggerBridge<DataModuleBridgeKoin>().niaNetworkDataSource() }
 }
