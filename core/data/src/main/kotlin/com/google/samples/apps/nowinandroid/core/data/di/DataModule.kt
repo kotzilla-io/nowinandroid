@@ -31,6 +31,7 @@ import com.google.samples.apps.nowinandroid.core.data.util.ConnectivityManagerNe
 import com.google.samples.apps.nowinandroid.core.data.util.NetworkMonitor
 import com.google.samples.apps.nowinandroid.core.data.util.TimeZoneBroadcastMonitor
 import com.google.samples.apps.nowinandroid.core.data.util.TimeZoneMonitor
+import com.google.samples.apps.nowinandroid.core.database.di.daosModule
 import com.google.samples.apps.nowinandroid.core.datastore.NiaPreferencesDataSource
 import com.google.samples.apps.nowinandroid.core.datastore.UserPreferences
 import com.google.samples.apps.nowinandroid.core.network.di.coroutineScopesKoinModule
@@ -112,7 +113,7 @@ val userDataRepository: UserDataRepository,
 */
 
 val dataKoinModule = module {
-    includes(userNewsResourceRepositoryKoinModule, coroutineScopesKoinModule)
+    includes(userNewsResourceRepositoryKoinModule, coroutineScopesKoinModule, daosModule)
     singleOf(::ConnectivityManagerNetworkMonitor) bind NetworkMonitor::class
     singleOf(::TimeZoneBroadcastMonitor) bind TimeZoneMonitor::class
 

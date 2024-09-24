@@ -26,32 +26,39 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import org.koin.core.component.KoinComponent
+import org.koin.core.scope.Scope
+import org.koin.dsl.module
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal object DaosModule {
+internal object DaosModule : KoinComponent {
+
+    // Bridged to Koin
     @Provides
-    fun providesTopicsDao(
-        database: NiaDatabase,
-    ): TopicDao = database.topicDao()
+    fun providesTopicsDao(): TopicDao = getKoin().get()
 
     @Provides
-    fun providesNewsResourceDao(
-        database: NiaDatabase,
-    ): NewsResourceDao = database.newsResourceDao()
+    fun providesNewsResourceDao(): NewsResourceDao = getKoin().get()
 
     @Provides
-    fun providesTopicFtsDao(
-        database: NiaDatabase,
-    ): TopicFtsDao = database.topicFtsDao()
+    fun providesTopicFtsDao(): TopicFtsDao = getKoin().get()
 
     @Provides
-    fun providesNewsResourceFtsDao(
-        database: NiaDatabase,
-    ): NewsResourceFtsDao = database.newsResourceFtsDao()
+    fun providesNewsResourceFtsDao(): NewsResourceFtsDao = getKoin().get()
 
     @Provides
-    fun providesRecentSearchQueryDao(
-        database: NiaDatabase,
-    ): RecentSearchQueryDao = database.recentSearchQueryDao()
+    fun providesRecentSearchQueryDao(): RecentSearchQueryDao = getKoin().get()
 }
+
+val daosModule = module {
+    includes(databaseModule)
+
+    single { niaDatabase().topicDao() }
+    single { niaDatabase().newsResourceDao() }
+    single { niaDatabase().topicFtsDao() }
+    single { niaDatabase().newsResourceFtsDao() }
+    single { niaDatabase().recentSearchQueryDao() }
+}
+
+private fun Scope.niaDatabase() = get<NiaDatabase>()
