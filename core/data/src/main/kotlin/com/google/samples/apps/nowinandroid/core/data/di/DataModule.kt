@@ -34,7 +34,9 @@ import com.google.samples.apps.nowinandroid.core.data.util.TimeZoneMonitor
 import com.google.samples.apps.nowinandroid.core.database.di.daosModule
 import com.google.samples.apps.nowinandroid.core.datastore.NiaPreferencesDataSource
 import com.google.samples.apps.nowinandroid.core.datastore.UserPreferences
+import com.google.samples.apps.nowinandroid.core.network.NiaNetworkDataSource
 import com.google.samples.apps.nowinandroid.core.network.di.coroutineScopesKoinModule
+import com.google.samples.apps.nowinandroid.core.notifications.Notifier
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -57,34 +59,19 @@ object DataModuleBridgeDagger : KoinComponent {
     fun providesTimeZoneMonitor() : TimeZoneMonitor = getKoin().get()
 }
 
+//TODO Remove TestDataModule
 @Module(includes = [DataModuleBridgeDagger::class])
 @InstallIn(SingletonComponent::class)
 abstract class DataModule {
-
-    @Binds
-    internal abstract fun bindsTopicRepository(
-        topicsRepository: OfflineFirstTopicsRepository,
-    ): TopicsRepository
-
-    @Binds
-    internal abstract fun bindsNewsResourceRepository(
-        newsRepository: OfflineFirstNewsRepository,
-    ): NewsRepository
-
-    @Binds
-    internal abstract fun bindsUserDataRepository(
-        userDataRepository: OfflineFirstUserDataRepository,
-    ): UserDataRepository
 }
 
 @InstallIn(SingletonComponent::class)
 @EntryPoint
 interface DataModuleBridgeKoin {
-    fun newsRepository(): NewsRepository
-    fun userDataRepository(): UserDataRepository
-    fun topicsRepository() : TopicsRepository
     fun niaPreferencesDataSource() : NiaPreferencesDataSource
     fun dataStore() : DataStore<UserPreferences>
+    fun niaNetworkDataSource(): NiaNetworkDataSource
+    fun notifier(): Notifier
 }
 
 val dataKoinModule = module {
@@ -93,10 +80,12 @@ val dataKoinModule = module {
     singleOf(::TimeZoneBroadcastMonitor) bind TimeZoneMonitor::class
     singleOf(::DefaultSearchContentsRepository) bind SearchContentsRepository::class
     singleOf(::DefaultRecentSearchRepository) bind RecentSearchRepository::class
+    singleOf(::OfflineFirstNewsRepository) bind NewsRepository::class
+    singleOf(::OfflineFirstTopicsRepository) bind TopicsRepository::class
+    singleOf(::OfflineFirstUserDataRepository) bind UserDataRepository::class
 
-    single { daggerBridge<DataModuleBridgeKoin>().newsRepository() }
-    single { daggerBridge<DataModuleBridgeKoin>().userDataRepository() }
-    single { daggerBridge<DataModuleBridgeKoin>().topicsRepository() }
+    single { daggerBridge<DataModuleBridgeKoin>().notifier() }
+    single { daggerBridge<DataModuleBridgeKoin>().niaNetworkDataSource() }
     single { daggerBridge<DataModuleBridgeKoin>().niaPreferencesDataSource() }
     single { daggerBridge<DataModuleBridgeKoin>().dataStore() }
 }
