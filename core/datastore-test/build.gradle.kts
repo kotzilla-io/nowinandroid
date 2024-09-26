@@ -23,7 +23,7 @@ android {
 }
 
 dependencies {
-    implementation(libs.hilt.android.testing)
+//    implementation(libs.hilt.android.testing)
     implementation(projects.core.common)
     implementation(projects.core.datastore)
 }

@@ -23,29 +23,35 @@ import com.google.samples.apps.nowinandroid.core.data.util.SyncManager
 import com.google.samples.apps.nowinandroid.sync.status.FirebaseSyncSubscriber
 import com.google.samples.apps.nowinandroid.sync.status.SyncSubscriber
 import com.google.samples.apps.nowinandroid.sync.status.WorkManagerSyncManager
-import dagger.Binds
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import com.google.samples.apps.nowinandroid.sync.workers.SyncWorker
+import org.koin.androidx.workmanager.dsl.workerOf
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.bind
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class SyncModule {
-    @Binds
-    internal abstract fun bindsSyncStatusMonitor(
-        syncStatusMonitor: WorkManagerSyncManager,
-    ): SyncManager
+//@Module
+//@InstallIn(SingletonComponent::class)
+//abstract class SyncModule {
+//    @Binds
+//    internal abstract fun bindsSyncStatusMonitor(
+//        syncStatusMonitor: WorkManagerSyncManager,
+//    ): SyncManager
+//
+//    @Binds
+//    internal abstract fun bindsSyncSubscriber(
+//        syncSubscriber: FirebaseSyncSubscriber,
+//    ): SyncSubscriber
+//
+//    companion object {
+//        @Provides
+//        @Singleton
+//        internal fun provideFirebaseMessaging(): FirebaseMessaging = Firebase.messaging
+//    }
+//}
 
-    @Binds
-    internal abstract fun bindsSyncSubscriber(
-        syncSubscriber: FirebaseSyncSubscriber,
-    ): SyncSubscriber
-
-    companion object {
-        @Provides
-        @Singleton
-        internal fun provideFirebaseMessaging(): FirebaseMessaging = Firebase.messaging
-    }
+val syncKoinModule = module {
+    singleOf(::WorkManagerSyncManager) bind SyncManager::class
+    singleOf(::FirebaseSyncSubscriber) bind SyncSubscriber::class
+    single<FirebaseMessaging> { Firebase.messaging }
+    workerOf(::SyncWorker)
 }

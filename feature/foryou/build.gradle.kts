@@ -31,7 +31,7 @@ dependencies {
     implementation(projects.core.domain)
     implementation(project(":core:notifications"))
 
-    testImplementation(libs.hilt.android.testing)
+//    testImplementation(libs.hilt.android.testing)
     testImplementation(libs.robolectric)
 //    testImplementation(projects.core.testing)
 //    testDemoImplementation(projects.core.screenshotTesting)

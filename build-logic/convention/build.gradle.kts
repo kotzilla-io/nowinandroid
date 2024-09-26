@@ -89,10 +89,10 @@ gradlePlugin {
             id = "nowinandroid.android.test"
             implementationClass = "AndroidTestConventionPlugin"
         }
-        register("hilt") {
-            id = "nowinandroid.hilt"
-            implementationClass = "HiltConventionPlugin"
-        }
+//        register("hilt") {
+//            id = "nowinandroid.hilt"
+//            implementationClass = "HiltConventionPlugin"
+//        }
         register("androidRoom") {
             id = "nowinandroid.android.room"
             implementationClass = "AndroidRoomConventionPlugin"

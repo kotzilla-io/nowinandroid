@@ -20,10 +20,10 @@ import com.google.samples.apps.nowinandroid.core.data.util.SyncManager
 //import com.google.samples.apps.nowinandroid.sync.di.SyncModule
 import com.google.samples.apps.nowinandroid.sync.status.StubSyncSubscriber
 import com.google.samples.apps.nowinandroid.sync.status.SyncSubscriber
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.components.SingletonComponent
-import dagger.hilt.testing.TestInstallIn
+//import dagger.Binds
+//import dagger.Module
+//import dagger.hilt.components.SingletonComponent
+//import dagger.hilt.testing.TestInstallIn
 
 //@Module
 //@TestInstallIn(
