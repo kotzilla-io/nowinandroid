@@ -26,6 +26,7 @@ plugins {
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.cloudInjectPlugin)
 }
 
 android {
@@ -133,11 +134,14 @@ dependencies {
 
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
-    implementation(libs.koin.androidx.startup)
+//    implementation(libs.koin.androidx.startup)
     implementation(libs.koin.androidx.workmanager)
     testImplementation(libs.koin.android.test)
 
     baselineProfile(projects.benchmarks)
+
+    implementation(libs.cloudInject)
+    implementation(libs.cloudInject.dev)
 }
 
 baselineProfile {

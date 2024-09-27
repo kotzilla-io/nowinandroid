@@ -58,6 +58,7 @@ truth = "1.4.2"
 turbine = "1.1.0"
 # Koin
 koin = "4.0.0"
+cloud-inject = "0.11.1"
 
 [bundles]
 androidx-compose-ui-test = ["androidx-compose-ui-test", "androidx-compose-ui-testManifest"]
@@ -159,6 +160,9 @@ koin-androidx-compose = {group = "io.insert-koin", name = "koin-androidx-compose
 koin-androidx-workmanager = {group = "io.insert-koin", name = "koin-androidx-workmanager", version.ref = "koin"}
 koin-compose-viewmodel = {group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin"}
 
+cloudInject = {group = "io.kotzilla", name = "cloud-inject", version.ref = "cloud-inject"}
+cloudInject-dev = {group = "io.kotzilla", name = "cloud-inject-dev", version.ref = "cloud-inject"}
+
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
@@ -188,6 +192,7 @@ protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
 room = { id = "androidx.room", version.ref = "room" }
 secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
+cloudInjectPlugin = { id  = "io.kotzilla.cloud-inject", version.ref = "cloud-inject"}
 
 # Plugins defined by this project
 nowinandroid-android-application = { id = "nowinandroid.android.application" }

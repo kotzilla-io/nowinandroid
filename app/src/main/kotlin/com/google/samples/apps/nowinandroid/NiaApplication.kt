@@ -20,18 +20,23 @@ import android.app.Application
 import coil.ImageLoader
 import coil.ImageLoaderFactory
 import com.google.samples.apps.nowinandroid.di.appModule
-import com.google.samples.apps.nowinandroid.di.jankStatsKoinModule
 import com.google.samples.apps.nowinandroid.sync.initializers.Sync
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
+import io.kotzilla.cloudinject.CloudInjectSDK
+import io.kotzilla.cloudinject.analytics.koin.analyticsLogger
+import io.kotzilla.cloudinject.dev.dev
+import io.kotzilla.cloudinject.dev.disableSSLVerification
+import io.kotzilla.cloudinject.dev.logs
+import io.kotzilla.cloudinject.dev.prod
+import io.kotzilla.cloudinject.dev.refreshRate
+import io.kotzilla.cloudinject.dev.staging
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
+import org.koin.android.logger.AndroidLogger
 import org.koin.androidx.workmanager.koin.workManagerFactory
-import org.koin.androix.startup.KoinStartup.onKoinStartup
 import org.koin.core.annotation.KoinExperimentalAPI
+import org.koin.core.context.startKoin
 import org.koin.core.logger.Level.DEBUG
-import org.koin.java.KoinJavaComponent.inject
-import javax.inject.Inject
 
 /**
  * [Application] class for NiA
@@ -44,20 +49,30 @@ class NiaApplication : Application(), ImageLoaderFactory {
     val imageLoader: ImageLoader by inject()
     val profileVerifierLogger: ProfileVerifierLogger by inject()
 
-    init {
-        onKoinStartup {
+    override fun onCreate() {
+        super.onCreate()
+
+        CloudInjectSDK.dev(this@NiaApplication)
+        {
+//            prod()
+            staging()
+//            dev("192.168.1.76")
+            logs()
+            refreshRate(10_000L)
+        }
+
+        startKoin {
             androidContext(this@NiaApplication)
-            androidLogger(DEBUG)
+//            androidLogger(DEBUG)
+            analyticsLogger(AndroidLogger(DEBUG))
             modules(appModule)
             workManagerFactory()
         }
-    }
 
-    override fun onCreate() {
-        super.onCreate()
         // Initialize Sync; the system responsible for keeping data in the app up to date.
         Sync.initialize(context = this)
         profileVerifierLogger()
+
     }
 
     override fun newImageLoader(): ImageLoader = imageLoader

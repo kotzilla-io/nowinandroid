@@ -1,3 +1,5 @@
+import java.util.Properties
+
 /*
  * Copyright 2021 The Android Open Source Project
  *
@@ -18,16 +20,33 @@ pluginManagement {
     includeBuild("build-logic")
     repositories {
         google()
+        mavenLocal()
         mavenCentral()
         gradlePluginPortal()
     }
+}
+
+val localPropertiesFile = File(rootDir, "local.properties")
+val localProperties = Properties()
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.reader())
 }
 
 dependencyResolutionManagement {
     repositoriesMode = RepositoriesMode.FAIL_ON_PROJECT_REPOS
     repositories {
         google()
+        mavenLocal()
         mavenCentral()
+
+        // Kotzilla Github Repo
+        maven {
+            url = uri("https://repository.kotzilla.io/repository/Cloud-Inject/")
+            credentials {
+                username =  localProperties.getProperty("KOTZILLA_USER")
+                password =  localProperties.getProperty("KOTZILLA_PWD")
+            }
+        }
     }
 }
 rootProject.name = "nowinandroid"
