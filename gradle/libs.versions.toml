@@ -58,7 +58,7 @@ truth = "1.4.2"
 turbine = "1.1.0"
 # Koin
 koin = "4.0.0"
-cloud-inject = "0.11.1"
+cloud-inject = "0.12.0"
 
 [bundles]
 androidx-compose-ui-test = ["androidx-compose-ui-test", "androidx-compose-ui-testManifest"]
@@ -161,7 +161,6 @@ koin-androidx-workmanager = {group = "io.insert-koin", name = "koin-androidx-wor
 koin-compose-viewmodel = {group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin"}
 
 cloudInject = {group = "io.kotzilla", name = "cloud-inject", version.ref = "cloud-inject"}
-cloudInject-dev = {group = "io.kotzilla", name = "cloud-inject-dev", version.ref = "cloud-inject"}
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }

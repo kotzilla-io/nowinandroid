@@ -24,12 +24,7 @@ import com.google.samples.apps.nowinandroid.sync.initializers.Sync
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
 import io.kotzilla.cloudinject.CloudInjectSDK
 import io.kotzilla.cloudinject.analytics.koin.analyticsLogger
-import io.kotzilla.cloudinject.dev.dev
-import io.kotzilla.cloudinject.dev.disableSSLVerification
-import io.kotzilla.cloudinject.dev.logs
-import io.kotzilla.cloudinject.dev.prod
-import io.kotzilla.cloudinject.dev.refreshRate
-import io.kotzilla.cloudinject.dev.staging
+import io.kotzilla.cloudinject.config.Environment.Prod
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
@@ -52,13 +47,10 @@ class NiaApplication : Application(), ImageLoaderFactory {
     override fun onCreate() {
         super.onCreate()
 
-        CloudInjectSDK.dev(this@NiaApplication)
-        {
-//            prod()
-            staging()
-//            dev("192.168.1.76")
-            logs()
-            refreshRate(10_000L)
+        CloudInjectSDK.setup(this){
+            onConfig {
+                useDebugLogs = true
+            }
         }
 
         startKoin {
