@@ -155,3 +155,7 @@ baselineProfile {
 dependencyGuard {
     configuration("prodReleaseRuntimeClasspath")
 }
+
+cloudInject {
+    site = "https://metadata-staging.kotzilla.io"
+}
