@@ -47,7 +47,7 @@ class NiaApplication : Application(), ImageLoaderFactory {
     override fun onCreate() {
         super.onCreate()
 
-        CloudInjectSDK.setup(this, "BuildConfig.CLOUD_INJECT_API_KEY"){
+        CloudInjectSDK.setup(this){
             setEnvironment(Staging)
             onConfig {
                 refreshRate = 15_000L
@@ -57,8 +57,7 @@ class NiaApplication : Application(), ImageLoaderFactory {
 
         startKoin {
             androidContext(this@NiaApplication)
-//            androidLogger(DEBUG)
-            analyticsLogger(AndroidLogger(DEBUG))
+            analyticsLogger(AndroidLogger())
             modules(appModule)
             workManagerFactory()
         }
