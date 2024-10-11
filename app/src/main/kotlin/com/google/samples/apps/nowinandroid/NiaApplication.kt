@@ -24,7 +24,6 @@ import com.google.samples.apps.nowinandroid.sync.initializers.Sync
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
 import io.kotzilla.cloudinject.CloudInjectSDK
 import io.kotzilla.cloudinject.analytics.koin.analyticsLogger
-import io.kotzilla.cloudinject.config.Environment.Prod
 import io.kotzilla.cloudinject.config.Environment.Staging
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
@@ -48,7 +47,7 @@ class NiaApplication : Application(), ImageLoaderFactory {
     override fun onCreate() {
         super.onCreate()
 
-        CloudInjectSDK.setup(this){
+        CloudInjectSDK.setup(this, "BuildConfig.CLOUD_INJECT_API_KEY"){
             setEnvironment(Staging)
             onConfig {
                 refreshRate = 15_000L

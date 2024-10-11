@@ -21,11 +21,10 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.toRoute
 import com.google.samples.apps.nowinandroid.feature.interests.navigation.InterestsRoute
 import kotlinx.coroutines.flow.StateFlow
-import javax.inject.Inject
 
 const val TOPIC_ID_KEY = "selectedTopicId"
 
-class Interests2PaneViewModel @Inject constructor(
+class Interests2PaneViewModel(
     private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 

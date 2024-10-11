@@ -1,0 +1,14 @@
+{
+    "version": "0.13.0-rc1",
+    "keys": [
+        {
+            "applicationId": "com.google.samples.apps.nowinandroid.demo.debug",
+            "apiKey": "ci-sdk-rnO0jMdLAXSjE1RMjQcP8LSX_xqqLlMO9-hin6p_fes",
+            "default": true
+        },
+        {
+            "applicationId": "com.google.samples.apps.nowinandroid.demo",
+            "apiKey": "ci-sdk-H86WsmBOz1aGN4iO-aA8a0GYp1V82Xsogx-ynvQOODo"
+        }
+    ]
+}

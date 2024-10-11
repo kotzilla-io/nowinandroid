@@ -26,6 +26,7 @@ plugins {
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi)
     alias(libs.plugins.kotlin.serialization)
+
     alias(libs.plugins.cloudInjectPlugin)
 }
 
@@ -33,13 +34,16 @@ android {
     defaultConfig {
         applicationId = "com.google.samples.apps.nowinandroid"
         versionCode = 8
-        versionName = "0.1.2-0.12.0" // X.Y.Z; X = Major, Y = minor, Z = Patch level
+        versionName = "0.1.2-0.13.0" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
         // Custom test runner to set up Hilt dependency graph
         testInstrumentationRunner = "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
+    }
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -157,5 +161,6 @@ dependencyGuard {
 }
 
 cloudInject {
-    site = "https://metadata-staging.kotzilla.io"
+    // staging
+    site = "https://gateway-staging.kotzilla.io"
 }
