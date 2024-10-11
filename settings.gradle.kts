@@ -15,38 +15,34 @@ import java.util.Properties
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 pluginManagement {
     includeBuild("build-logic")
     repositories {
         google()
-        mavenLocal()
         mavenCentral()
+        // Kotzilla Github Repo
+        maven {
+            name = "kotzillaRepository"
+            url = uri("https://repository.kotzilla.io/repository/Cloud-Inject/")
+            credentials(PasswordCredentials::class)
+        }
+//        mavenLocal()
         gradlePluginPortal()
     }
-}
-
-val localPropertiesFile = File(rootDir, "local.properties")
-val localProperties = Properties()
-if (localPropertiesFile.exists()) {
-    localProperties.load(localPropertiesFile.reader())
 }
 
 dependencyResolutionManagement {
     repositoriesMode = RepositoriesMode.FAIL_ON_PROJECT_REPOS
     repositories {
         google()
-        mavenLocal()
-        mavenCentral()
-
         // Kotzilla Github Repo
         maven {
+            name = "kotzillaRepository"
             url = uri("https://repository.kotzilla.io/repository/Cloud-Inject/")
-            credentials {
-                username =  localProperties.getProperty("KOTZILLA_USER")
-                password =  localProperties.getProperty("KOTZILLA_PWD")
-            }
+            credentials(PasswordCredentials::class)
         }
+        mavenCentral()
+//        mavenLocal()
     }
 }
 rootProject.name = "nowinandroid"
