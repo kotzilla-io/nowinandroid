@@ -23,7 +23,7 @@ pluginManagement {
         // Kotzilla Github Repo
         maven {
             name = "kotzillaRepository"
-            url = uri("https://repository.kotzilla.io/repository/Cloud-Inject/")
+            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
             credentials(PasswordCredentials::class)
         }
 //        mavenLocal()
@@ -38,7 +38,7 @@ dependencyResolutionManagement {
         // Kotzilla Github Repo
         maven {
             name = "kotzillaRepository"
-            url = uri("https://repository.kotzilla.io/repository/Cloud-Inject/")
+            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
             credentials(PasswordCredentials::class)
         }
         mavenCentral()

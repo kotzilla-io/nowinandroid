@@ -22,9 +22,9 @@ import coil.ImageLoaderFactory
 import com.google.samples.apps.nowinandroid.di.appModule
 import com.google.samples.apps.nowinandroid.sync.initializers.Sync
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
-import io.kotzilla.cloudinject.CloudInjectSDK
-import io.kotzilla.cloudinject.analytics.koin.analyticsLogger
-import io.kotzilla.cloudinject.config.Environment.Staging
+import io.kotzilla.sdk.KotzillaSDK
+import io.kotzilla.sdk.analytics.koin.analyticsLogger
+import io.kotzilla.sdk.config.Environment.Staging
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
@@ -47,7 +47,7 @@ class NiaApplication : Application(), ImageLoaderFactory {
     override fun onCreate() {
         super.onCreate()
 
-        CloudInjectSDK.setup(this){
+        KotzillaSDK.setup(this){
             setEnvironment(Staging)
             onConfig {
                 refreshRate = 15_000L
@@ -57,7 +57,7 @@ class NiaApplication : Application(), ImageLoaderFactory {
 
         startKoin {
             androidContext(this@NiaApplication)
-            analyticsLogger(AndroidLogger())
+            analyticsLogger(AndroidLogger(DEBUG))
             modules(appModule)
             workManagerFactory()
         }

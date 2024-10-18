@@ -26,8 +26,7 @@ plugins {
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi)
     alias(libs.plugins.kotlin.serialization)
-
-    alias(libs.plugins.cloudInjectPlugin)
+    alias(libs.plugins.kotzilla)
 }
 
 android {
@@ -144,7 +143,7 @@ dependencies {
 
     baselineProfile(projects.benchmarks)
 
-    implementation(libs.cloudInject)
+    implementation(libs.kotzilla.sdk)
 }
 
 baselineProfile {
@@ -160,7 +159,7 @@ dependencyGuard {
     configuration("prodReleaseRuntimeClasspath")
 }
 
-cloudInject {
+kotzilla {
     // staging
     site = "https://gateway-staging.kotzilla.io"
 }

@@ -1,5 +1,5 @@
 {
-    "cloudInjectionVersion": "0.13.0",
+    "sdkVersion": "0.13.0",
     "keys": [
         {
             "applicationPackageName": "com.google.samples.apps.nowinandroid.demo.debug",
