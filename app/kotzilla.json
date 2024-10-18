@@ -7,8 +7,8 @@
             "isDefault": true
         },
         {
-            "applicationPackageName": "com.google.samples.apps.nowinandroid",
-            "apiKey": "ci-sdk-H86WsmBOz1aGN4iO-aA8a0GYp1V82Xsogx-ynvQOODo"
+            "applicationPackageName": "com.google.samples.apps.nowinandroid.demo",
+            "apiKey": "ktz-sdk-F0lPuPvZQH5dZv-Qh-TzFxbVELgp_4g-i_zhflM_e1s"
         }
     ]
 }
