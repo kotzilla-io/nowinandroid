@@ -2,11 +2,13 @@
     "sdkVersion": "0.13.0",
     "keys": [
         {
+            "id": "01926702-b845-734b-9a93-311dcc58aee8",
             "applicationPackageName": "com.google.samples.apps.nowinandroid.demo.debug",
             "apiKey": "ci-sdk-rnO0jMdLAXSjE1RMjQcP8LSX_xqqLlMO9-hin6p_fes",
             "isDefault": true
         },
         {
+            "id": "01926708-6731-743a-9ffe-09a0c339f7b2",
             "applicationPackageName": "com.google.samples.apps.nowinandroid.demo",
             "apiKey": "ktz-sdk-F0lPuPvZQH5dZv-Qh-TzFxbVELgp_4g-i_zhflM_e1s"
         }
