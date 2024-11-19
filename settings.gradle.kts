@@ -20,13 +20,13 @@ pluginManagement {
     repositories {
         google()
         mavenCentral()
-        // Kotzilla Github Repo
+        gradlePluginPortal()
+        mavenLocal()
+        // Kotzilla
         maven {
-            name = "kotzillaRepository"
+            name = "kotzilla"
             url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
         }
-//        mavenLocal()
-        gradlePluginPortal()
     }
 }
 
@@ -34,13 +34,13 @@ dependencyResolutionManagement {
     repositoriesMode = RepositoriesMode.FAIL_ON_PROJECT_REPOS
     repositories {
         google()
-        // Kotzilla Github Repo
+        mavenCentral()
+        mavenLocal()
+        // Kotzilla
         maven {
-            name = "kotzillaRepository"
+            name = "kotzilla"
             url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
         }
-        mavenCentral()
-//        mavenLocal()
     }
 }
 rootProject.name = "nowinandroid"
