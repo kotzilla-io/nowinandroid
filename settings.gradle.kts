@@ -24,7 +24,6 @@ pluginManagement {
         maven {
             name = "kotzillaRepository"
             url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
-            credentials(PasswordCredentials::class)
         }
 //        mavenLocal()
         gradlePluginPortal()
@@ -39,7 +38,6 @@ dependencyResolutionManagement {
         maven {
             name = "kotzillaRepository"
             url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
-            credentials(PasswordCredentials::class)
         }
         mavenCentral()
 //        mavenLocal()
