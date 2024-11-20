@@ -2,15 +2,17 @@
     "sdkVersion": "0.13.0",
     "keys": [
         {
-            "id": "01926702-b845-734b-9a93-311dcc58aee8",
+            "appId": "23430667-7d65-4c52-9735-9e0ab8372f23",
             "applicationPackageName": "com.google.samples.apps.nowinandroid.demo.debug",
-            "apiKey": "ci-sdk-rnO0jMdLAXSjE1RMjQcP8LSX_xqqLlMO9-hin6p_fes",
+            "keyId": "0193459d-bbb7-79a9-9a33-6156fe814dee",
+            "apiKey": "ktz-sdk-oXeY0wYiMuofxUad1Ni7aYn2GrFdvvsI_p_h_KgEKcM",
             "isDefault": true
         },
         {
-            "id": "01926708-6731-743a-9ffe-09a0c339f7b2",
+            "appId": "794af76b-d199-4fa6-a6b8-d8cb5d8fdafd",
             "applicationPackageName": "com.google.samples.apps.nowinandroid.demo",
-            "apiKey": "ktz-sdk-F0lPuPvZQH5dZv-Qh-TzFxbVELgp_4g-i_zhflM_e1s"
+            "keyId": "0193459f-0b9e-791b-8f9b-f57b36a8c829",
+            "apiKey": "ktz-sdk-mcCR4QR9uMiReHoOCuK0k-XvAK7_kdjg8g2EzEZ82co"
         }
     ]
 }
