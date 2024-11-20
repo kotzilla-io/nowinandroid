@@ -58,7 +58,7 @@ truth = "1.4.2"
 turbine = "1.1.0"
 # Koin
 koin = "4.0.0"
-kotzilla = "0.13.1"
+kotzilla = "0.13.2"
 
 [bundles]
 androidx-compose-ui-test = ["androidx-compose-ui-test", "androidx-compose-ui-testManifest"]

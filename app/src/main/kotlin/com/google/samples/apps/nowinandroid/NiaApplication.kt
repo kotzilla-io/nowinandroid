@@ -32,6 +32,7 @@ import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level.DEBUG
+import kotlin.random.Random
 
 /**
  * [Application] class for NiA
@@ -48,7 +49,7 @@ class NiaApplication : Application(), ImageLoaderFactory {
         super.onCreate()
 
         KotzillaSDK.setup(this){
-            setEnvironment(Staging)
+//            setEnvironment(Staging)
             onConfig {
                 refreshRate = 15_000L
                 useDebugLogs = true
@@ -57,7 +58,7 @@ class NiaApplication : Application(), ImageLoaderFactory {
 
         startKoin {
             androidContext(this@NiaApplication)
-            analyticsLogger(AndroidLogger(DEBUG))
+            analyticsLogger(AndroidLogger())
             modules(appModule)
             workManagerFactory()
         }
@@ -66,6 +67,8 @@ class NiaApplication : Application(), ImageLoaderFactory {
         Sync.initialize(context = this)
         profileVerifierLogger()
 
+        KotzillaSDK.log("let's fire an issue")
+        KotzillaSDK.createIssue("Custom Business Issue","Issue detected at start!")
     }
 
     override fun newImageLoader(): ImageLoader = imageLoader
