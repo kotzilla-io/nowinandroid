@@ -21,7 +21,7 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
-        mavenLocal()
+//        mavenLocal()
         // Kotzilla
         maven {
             name = "kotzilla"
@@ -35,7 +35,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        mavenLocal()
+//        mavenLocal()
         // Kotzilla
         maven {
             name = "kotzilla"
