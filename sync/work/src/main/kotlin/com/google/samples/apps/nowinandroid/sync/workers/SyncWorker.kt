@@ -26,6 +26,8 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkerParameters
 import com.google.samples.apps.nowinandroid.core.analytics.AnalyticsHelper
 import com.google.samples.apps.nowinandroid.core.data.Synchronizer
+import com.google.samples.apps.nowinandroid.core.data.model.Issue
+import com.google.samples.apps.nowinandroid.core.data.model.Issues.blockForIssue
 import com.google.samples.apps.nowinandroid.core.data.repository.NewsRepository
 import com.google.samples.apps.nowinandroid.core.data.repository.SearchContentsRepository
 import com.google.samples.apps.nowinandroid.core.data.repository.TopicsRepository
@@ -59,6 +61,10 @@ class SyncWorker(
     private val analyticsHelper: AnalyticsHelper,
     private val syncSubscriber: SyncSubscriber,
 ) : CoroutineWorker(appContext, workerParams), Synchronizer {
+
+    init {
+        blockForIssue(Issue.BLOCKING_RESOLUTION)
+    }
 
     override suspend fun getForegroundInfo(): ForegroundInfo =
         appContext.syncForegroundInfo()

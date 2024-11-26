@@ -18,6 +18,8 @@ package com.google.samples.apps.nowinandroid.core.data.repository
 
 import androidx.annotation.VisibleForTesting
 import com.google.samples.apps.nowinandroid.core.analytics.AnalyticsHelper
+import com.google.samples.apps.nowinandroid.core.data.model.Issue
+import com.google.samples.apps.nowinandroid.core.data.model.Issues.blockForIssue
 import com.google.samples.apps.nowinandroid.core.datastore.NiaPreferencesDataSource
 import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig
 import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand
@@ -28,6 +30,10 @@ internal class OfflineFirstUserDataRepository(
     private val niaPreferencesDataSource: NiaPreferencesDataSource,
     private val analyticsHelper: AnalyticsHelper,
 ) : UserDataRepository {
+
+    init {
+        blockForIssue(Issue.CHILD_DEPENDENCY_PERF)
+    }
 
     override val userData: Flow<UserData> =
         niaPreferencesDataSource.userData

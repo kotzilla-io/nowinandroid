@@ -19,20 +19,19 @@ package com.google.samples.apps.nowinandroid
 import android.app.Application
 import coil.ImageLoader
 import coil.ImageLoaderFactory
+import com.google.samples.apps.nowinandroid.core.data.model.Issue
+import com.google.samples.apps.nowinandroid.core.data.model.Issues.blockForIssue
 import com.google.samples.apps.nowinandroid.di.appModule
 import com.google.samples.apps.nowinandroid.sync.initializers.Sync
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
 import io.kotzilla.sdk.KotzillaSDK
 import io.kotzilla.sdk.analytics.koin.analyticsLogger
-import io.kotzilla.sdk.config.Environment.Staging
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
 import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.core.context.startKoin
-import org.koin.core.logger.Level.DEBUG
-import kotlin.random.Random
 
 /**
  * [Application] class for NiA
@@ -47,6 +46,8 @@ class NiaApplication : Application(), ImageLoaderFactory {
 
     override fun onCreate() {
         super.onCreate()
+
+//        KotzillaSDK.setup(this)
 
         KotzillaSDK.setup(this){
 //            setEnvironment(Staging)
@@ -69,6 +70,8 @@ class NiaApplication : Application(), ImageLoaderFactory {
 
         KotzillaSDK.log("let's fire an issue")
         KotzillaSDK.createIssue("Custom Business Issue","Issue detected at start!")
+
+        blockForIssue(Issue.STARTUP_TIME)
     }
 
     override fun newImageLoader(): ImageLoader = imageLoader
