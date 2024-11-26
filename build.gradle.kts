@@ -26,6 +26,7 @@ buildscript {
         classpath(libs.google.oss.licenses.plugin) {
             exclude(group = "com.google.protobuf")
         }
+        classpath(libs.kotzilla.plugin)
     }
 
 }
@@ -48,5 +49,6 @@ plugins {
     alias(libs.plugins.roborazzi) apply false
     alias(libs.plugins.secrets) apply false
     alias(libs.plugins.room) apply false
+//    alias(libs.plugins.kotzilla) apply false
     alias(libs.plugins.module.graph) apply true // Plugin applied to allow module graph generation
 }

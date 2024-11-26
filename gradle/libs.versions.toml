@@ -58,7 +58,7 @@ truth = "1.4.2"
 turbine = "1.1.0"
 # Koin
 koin = "4.0.0"
-kotzilla = "0.13.2"
+kotzilla = "0.13.3"
 
 [bundles]
 androidx-compose-ui-test = ["androidx-compose-ui-test", "androidx-compose-ui-testManifest"]
@@ -161,6 +161,8 @@ koin-androidx-workmanager = {group = "io.insert-koin", name = "koin-androidx-wor
 koin-compose-viewmodel = {group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin"}
 
 kotzilla-sdk = {group = "io.kotzilla", name = "kotzilla-sdk", version.ref = "kotzilla" }
+kotzilla-plugin = {group = "io.kotzilla", name = "kotzilla-plugin", version.ref = "kotzilla" }
+
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -191,7 +193,7 @@ protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
 room = { id = "androidx.room", version.ref = "room" }
 secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
-kotzilla = { id  = "io.kotzilla.kotzilla-plugin", version.ref = "kotzilla" }
+kotzilla = { id  = "io.kotzilla.kotzilla-plugin" }
 
 # Plugins defined by this project
 nowinandroid-android-application = { id = "nowinandroid.android.application" }
