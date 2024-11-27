@@ -20,18 +20,15 @@ import android.app.Application
 import coil.ImageLoader
 import coil.ImageLoaderFactory
 import com.google.samples.apps.nowinandroid.di.appModule
-import com.google.samples.apps.nowinandroid.di.jankStatsKoinModule
 import com.google.samples.apps.nowinandroid.sync.initializers.Sync
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.workmanager.koin.workManagerFactory
-import org.koin.androix.startup.KoinStartup.onKoinStartup
 import org.koin.core.annotation.KoinExperimentalAPI
+import org.koin.core.context.startKoin
 import org.koin.core.logger.Level.DEBUG
-import org.koin.java.KoinJavaComponent.inject
-import javax.inject.Inject
 
 /**
  * [Application] class for NiA
@@ -44,17 +41,16 @@ class NiaApplication : Application(), ImageLoaderFactory {
     val imageLoader: ImageLoader by inject()
     val profileVerifierLogger: ProfileVerifierLogger by inject()
 
-    init {
-        onKoinStartup {
+    override fun onCreate() {
+        super.onCreate()
+
+        startKoin {
             androidContext(this@NiaApplication)
             androidLogger(DEBUG)
             modules(appModule)
             workManagerFactory()
         }
-    }
 
-    override fun onCreate() {
-        super.onCreate()
         // Initialize Sync; the system responsible for keeping data in the app up to date.
         Sync.initialize(context = this)
         profileVerifierLogger()
