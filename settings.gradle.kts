@@ -22,12 +22,12 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
 
-//        mavenLocal()
-        // Kotzilla
-        maven {
-            name = "kotzilla"
-            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
-        }
+        mavenLocal()
+//        // Kotzilla
+//        maven {
+//            name = "kotzilla"
+//            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
+//        }
     }
 }
 
@@ -37,12 +37,12 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
 
-//        mavenLocal()
-        // Kotzilla
-        maven {
-            name = "kotzilla"
-            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
-        }
+        mavenLocal()
+//        // Kotzilla
+//        maven {
+//            name = "kotzilla"
+//            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
+//        }
     }
 }
 rootProject.name = "nowinandroid"

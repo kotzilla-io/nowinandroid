@@ -33,7 +33,7 @@ android {
     defaultConfig {
         applicationId = "com.google.samples.apps.nowinandroid"
         versionCode = 8
-        versionName = "0.1.2-0.13.4" // X.Y.Z; X = Major, Y = minor, Z = Patch level
+        versionName = "0.1.2-0.13.5-Beta1" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
         // Custom test runner to set up Hilt dependency graph
         testInstrumentationRunner = "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
@@ -160,6 +160,7 @@ dependencyGuard {
 }
 
 kotzilla {
-    // staging
-//    site = "https://gateway-staging.kotzilla.io"
+    displayLogs = true
+    site = "https://gateway-staging.kotzilla.io"
+    projectFile = "kotzilla-staging.json"
 }

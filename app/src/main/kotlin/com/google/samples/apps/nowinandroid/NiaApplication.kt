@@ -26,6 +26,7 @@ import com.google.samples.apps.nowinandroid.sync.initializers.Sync
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
 import io.kotzilla.sdk.KotzillaSDK
 import io.kotzilla.sdk.analytics.koin.analyticsLogger
+import io.kotzilla.sdk.config.Environment.Staging
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
@@ -48,9 +49,8 @@ class NiaApplication : Application(), ImageLoaderFactory {
         super.onCreate()
 
 //        KotzillaSDK.setup(this)
-
         KotzillaSDK.setup(this){
-//            setEnvironment(Staging)
+            setEnvironment(Staging)
             onConfig {
                 refreshRate = 15_000L
                 useDebugLogs = true
