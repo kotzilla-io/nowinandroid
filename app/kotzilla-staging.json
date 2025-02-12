@@ -2,10 +2,10 @@
     "sdkVersion": "0.13.4",
     "keys": [
         {
-            "appId": "23430667-7d65-4c52-9735-9e0ab8372f23",
+            "appId": "650a38b6-6469-42c7-aafc-082161b6fde4",
             "applicationPackageName": "com.google.samples.apps.nowinandroid.demo.debug",
-            "keyId": "0194d685-ab32-713e-9053-216cf68c9f62",
-            "apiKey": "ktz-sdk-KO32IpCV5DJU_-w7x_yPRMSF-Ie16QHLm8FwO7ORhPQ"
+            "keyId": "0194efff-7878-7f69-ba9b-19b0bb314e67",
+            "apiKey": "ktz-sdk-oIcm7l3wm76xdFcjJxaFOLKL9FothX-ml2KF4cdEpBA"
         },
         {
             "appId": "794af76b-d199-4fa6-a6b8-d8cb5d8fdafd",
