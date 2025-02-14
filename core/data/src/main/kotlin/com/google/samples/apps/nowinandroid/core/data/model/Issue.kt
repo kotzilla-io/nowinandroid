@@ -18,15 +18,15 @@ package com.google.samples.apps.nowinandroid.core.data.model
 
 object Issues {
     private val values = hashMapOf<Issue, Boolean>(
-        Issue.STARTUP_TIME to true,
-        Issue.DEPENDENCY_PERF to true,
-        Issue.CHILD_DEPENDENCY_PERF to true,
-        Issue.BLOCKING_RESOLUTION to true,
-        Issue.BLOCKING_MAIN to true,
+        Issue.STARTUP_TIME to false,
+        Issue.DEPENDENCY_PERF to false,
+        Issue.CHILD_DEPENDENCY_PERF to false,
+        Issue.BLOCKING_RESOLUTION to false,
+        Issue.BLOCKING_MAIN to false,
     )
 
     private val delays = hashMapOf<Issue, Long>(
-        Issue.STARTUP_TIME to 1000L,
+        Issue.STARTUP_TIME to 6000L,
         Issue.DEPENDENCY_PERF to 250L,
         Issue.CHILD_DEPENDENCY_PERF to 250L,
         Issue.BLOCKING_MAIN to 1000L,

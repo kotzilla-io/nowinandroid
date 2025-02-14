@@ -27,10 +27,10 @@ import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
 import io.kotzilla.sdk.KotzillaSDK
 import io.kotzilla.sdk.analytics.koin.analytics
 import io.kotzilla.sdk.analytics.koin.analyticsLogger
+import io.kotzilla.sdk.client.ktor3.Ktor3Engine
 import io.kotzilla.sdk.config.Environment.Staging
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
-import org.koin.android.logger.AndroidLogger
 import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.core.context.startKoin
@@ -51,6 +51,7 @@ class NiaApplication : Application(), ImageLoaderFactory {
 
 //        KotzillaSDK.setup(this)
 //        KotzillaSDK.setup(this){
+//            setHttpEngine(Ktor3Engine())
 //            setEnvironment(Staging)
 //            onConfig {
 //                refreshRate = 15_000L
@@ -61,8 +62,10 @@ class NiaApplication : Application(), ImageLoaderFactory {
         startKoin {
             androidContext(this@NiaApplication)
             // One line config
+//            analyticsLogger()
             analytics(this@NiaApplication){
                 // Dev details - for internals
+                setHttpEngine(Ktor3Engine())
                 setEnvironment(Staging)
                 onConfig {
                     refreshRate = 15_000L
