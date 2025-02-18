@@ -47,9 +47,7 @@ class NiaApplication : Application(), ImageLoaderFactory {
     override fun onCreate() {
         super.onCreate()
 
-//        KotzillaSDK.setup(this)
 //        KotzillaSDK.setup(this){
-//            setHttpEngine(Ktor3Engine())
 //            setEnvironment(Staging)
 //            onConfig {
 //                refreshRate = 15_000L
@@ -57,11 +55,35 @@ class NiaApplication : Application(), ImageLoaderFactory {
 //            }
 //        }
 
+
+//        val sdk = KotzillaCoreSDK
+//            .setup("ktz-sdk-oIcm7l3wm76xdFcjJxaFOLKL9FothX-ml2KF4cdEpBA","1.0-KMP")
+////            .setAndroidLogger(this@NiaApplication)
+//            .setEnvironment(Staging)
+//            .onConfig {
+//                refreshRate = 15_000L
+//                useDebugLogs = true
+//            }
+////            .allAnalytics(this@NiaApplication)
+//            .connect()
+
+//        KotzillaCoreSDK
+//            .setup("ktz-sdk-oIcm7l3wm76xdFcjJxaFOLKL9FothX-ml2KF4cdEpBA","1.0-KMP")
+//            .setAndroidLogger(this@NiaApplication)
+//            .setEnvironment(Staging)
+//            .onConfig {
+//                refreshRate = 15_000L
+//                useDebugLogs = true
+//            }
+//            .attachKoin()
+//            .androidAnalytics(this@NiaApplication)
+//            .connect()
+
         startKoin {
             androidContext(this@NiaApplication)
             // One line config
-//            analyticsLogger()
-            analytics(this@NiaApplication){
+//            analyticsLogger(sdkInstance = sdk)
+            analytics {
                 // Dev details - for internals
                 setEnvironment(Staging)
                 onConfig {
