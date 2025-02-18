@@ -96,11 +96,12 @@ class NiaApplication : Application(), ImageLoaderFactory {
         }
 
         // Initialize Sync; the system responsible for keeping data in the app up to date.
-        Sync.initialize(context = this)
-        profileVerifierLogger()
-
         KotzillaSDK.log("let's fire an issue")
         KotzillaSDK.createIssue("Custom Business Issue","Issue detected at start!")
+        KotzillaSDK.log("event: null trnsition from alert_analysis to alert_analysis")
+
+        Sync.initialize(context = this)
+        profileVerifierLogger()
 
         blockForIssue(Issue.STARTUP_TIME)
     }
