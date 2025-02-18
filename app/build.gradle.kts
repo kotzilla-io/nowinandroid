@@ -144,7 +144,7 @@ dependencies {
     baselineProfile(projects.benchmarks)
 
     implementation(libs.kotzilla.sdk)
-    implementation(libs.kotzilla.client.ktor3)
+//    implementation(libs.kotzilla.sdk.ktor3)
 }
 
 baselineProfile {
