@@ -24,9 +24,15 @@ import com.google.samples.apps.nowinandroid.core.data.model.Issues.blockForIssue
 import com.google.samples.apps.nowinandroid.di.appModule
 import com.google.samples.apps.nowinandroid.sync.initializers.Sync
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
+import io.kotzilla.sdk.KotzillaCoreSDK
 import io.kotzilla.sdk.KotzillaSDK
 import io.kotzilla.sdk.analytics.koin.analytics
+import io.kotzilla.sdk.analytics.koin.analyticsLogger
+import io.kotzilla.sdk.android.security.apiKey
+import io.kotzilla.sdk.androidAnalytics
 import io.kotzilla.sdk.config.Environment.Staging
+import io.kotzilla.sdk.getVersionName
+import io.kotzilla.sdk.setAndroidLogger
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.koin.workManagerFactory
@@ -47,6 +53,7 @@ class NiaApplication : Application(), ImageLoaderFactory {
     override fun onCreate() {
         super.onCreate()
 
+        // Android 2 steps setup with analyticsLogger()
 //        KotzillaSDK.setup(this){
 //            setEnvironment(Staging)
 //            onConfig {
@@ -55,36 +62,42 @@ class NiaApplication : Application(), ImageLoaderFactory {
 //            }
 //        }
 
-
-//        val sdk = KotzillaCoreSDK
-//            .setup("ktz-sdk-oIcm7l3wm76xdFcjJxaFOLKL9FothX-ml2KF4cdEpBA","1.0-KMP")
-////            .setAndroidLogger(this@NiaApplication)
-//            .setEnvironment(Staging)
-//            .onConfig {
-//                refreshRate = 15_000L
-//                useDebugLogs = true
-//            }
-////            .allAnalytics(this@NiaApplication)
-//            .connect()
-
+//        // KMP Setup 2 steps setup with analyticsLogger()
 //        KotzillaCoreSDK
 //            .setup("ktz-sdk-oIcm7l3wm76xdFcjJxaFOLKL9FothX-ml2KF4cdEpBA","1.0-KMP")
-//            .setAndroidLogger(this@NiaApplication)
 //            .setEnvironment(Staging)
 //            .onConfig {
 //                refreshRate = 15_000L
 //                useDebugLogs = true
 //            }
 //            .attachKoin()
-//            .androidAnalytics(this@NiaApplication)
+//            .connect()
+
+//        // SDK Setup - need analyticsLogger(sdkInstance = sdk)
+//        val sdk = KotzillaCoreSDK
+//            .setup(apiKey(),getVersionName()) // apiKey(),getVersionName() in Android else manual for now
+//            .setEnvironment(Staging)
+//            .onConfig {
+//                refreshRate = 15_000L
+//                useDebugLogs = true
+//            }
 //            .connect()
 
         startKoin {
             androidContext(this@NiaApplication)
-            // One line config
-//            analyticsLogger(sdkInstance = sdk)
+
+            // one-line setup Android
+//            analytics()
+
+            // one-line setup KMP
+//            analytics {
+//                // in KMP
+//                setApiKey()
+//                setVersion()
+//            }
+
+            // internal dev
             analytics {
-                // Dev details - for internals
                 setEnvironment(Staging)
                 onConfig {
                     refreshRate = 15_000L
