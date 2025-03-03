@@ -22,7 +22,7 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
 
-        mavenLocal()
+//        mavenLocal()
         maven {
             name = "kotzilla"
             url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
@@ -36,7 +36,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
 
-        mavenLocal()
+//        mavenLocal()
         maven {
             name = "kotzilla"
             url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
