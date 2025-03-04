@@ -19,14 +19,14 @@ pluginManagement {
     includeBuild("build-logic")
     repositories {
         google()
-        mavenCentral()
-        gradlePluginPortal()
-
 //        mavenLocal()
         maven {
             name = "kotzilla"
             url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
         }
+        mavenCentral()
+        gradlePluginPortal()
+
     }
 }
 
@@ -34,13 +34,12 @@ dependencyResolutionManagement {
     repositoriesMode = RepositoriesMode.FAIL_ON_PROJECT_REPOS
     repositories {
         google()
-        mavenCentral()
-
 //        mavenLocal()
         maven {
             name = "kotzilla"
             url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
         }
+        mavenCentral()
     }
 }
 rootProject.name = "nowinandroid"

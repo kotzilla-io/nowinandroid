@@ -161,6 +161,8 @@ dependencyGuard {
 }
 
 kotzilla {
+    // to manually upload files
+//    uploadMappingFile = false
     displayLogs = true
     site = "https://gateway-staging.kotzilla.io"
     projectFile = "kotzilla-staging.json"
