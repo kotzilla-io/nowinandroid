@@ -20,9 +20,9 @@ object Issues {
     private val values = hashMapOf<Issue, Boolean>(
         Issue.STARTUP_TIME to false,
         Issue.DEPENDENCY_PERF to false,
-        Issue.CHILD_DEPENDENCY_PERF to false,
+        Issue.CHILD_DEPENDENCY_PERF to true,
         Issue.BLOCKING_RESOLUTION to false,
-        Issue.BLOCKING_MAIN to false,
+        Issue.BLOCKING_MAIN to true,
     )
 
     private val delays = hashMapOf<Issue, Long>(

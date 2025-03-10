@@ -33,7 +33,7 @@ android {
     defaultConfig {
         applicationId = "com.google.samples.apps.nowinandroid"
         versionCode = 8
-        versionName = "0.1.2-1.0.0" // X.Y.Z; X = Major, Y = minor, Z = Patch level
+        versionName = "0.1.2-1.0.1" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
         // Custom test runner to set up Hilt dependency graph
         testInstrumentationRunner = "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
@@ -165,5 +165,6 @@ kotzilla {
 //    uploadMappingFile = false
     displayLogs = true
     site = "https://gateway-staging.kotzilla.io"
+    // Staging App - Now In Android 2025.03
     projectFile = "kotzilla-staging.json"
 }
