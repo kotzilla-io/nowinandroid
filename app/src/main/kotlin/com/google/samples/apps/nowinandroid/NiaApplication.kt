@@ -35,9 +35,11 @@ import io.kotzilla.sdk.getVersionName
 import io.kotzilla.sdk.setAndroidLogger
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.logger.AndroidLogger
 import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 
 /**
  * [Application] class for NiA

@@ -20,6 +20,7 @@ import android.app.Activity
 import android.util.Log
 import androidx.metrics.performance.JankStats
 import androidx.metrics.performance.JankStats.OnFrameListener
+import com.google.samples.apps.nowinandroid.MainActivity
 import com.google.samples.apps.nowinandroid.MainActivityViewModel
 import com.google.samples.apps.nowinandroid.ui.interests2pane.Interests2PaneViewModel
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
@@ -31,7 +32,11 @@ val jankStatsKoinModule = module {
     viewModelOf(::MainActivityViewModel)
     viewModelOf(::Interests2PaneViewModel)
     singleOf(::ProfileVerifierLogger)
-    factory { (activity : Activity) -> JankStats.createAndTrack(activity.window, providesOnFrameListener()) }
+    scope<MainActivity>{
+        scoped { (activity : Activity) -> JankStats.createAndTrack(activity.window, providesOnFrameListener()) }
+    }
+    // alternate to scope
+//    factory { (activity : Activity) -> JankStats.createAndTrack(activity.window, providesOnFrameListener()) }
 }
 
 fun providesOnFrameListener(): OnFrameListener = OnFrameListener { frameData ->

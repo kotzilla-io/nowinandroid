@@ -52,13 +52,18 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.compose.KoinAndroidContext
+import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 // To keep for ViewModels
 //@AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity(), AndroidScopeComponent {
+
+
+    override val scope by activityScope()
 
     /**
      * Lazily inject [JankStats], which is used to track jank throughout the app.
