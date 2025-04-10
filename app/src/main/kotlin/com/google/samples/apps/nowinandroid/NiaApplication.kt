@@ -24,11 +24,9 @@ import com.google.samples.apps.nowinandroid.sync.initializers.Sync
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.core.context.startKoin
-import org.koin.core.logger.Level.DEBUG
 
 /**
  * [Application] class for NiA
@@ -46,7 +44,6 @@ class NiaApplication : Application(), ImageLoaderFactory {
 
         startKoin {
             androidContext(this@NiaApplication)
-            androidLogger(DEBUG)
             modules(appModule)
             workManagerFactory()
         }
