@@ -58,7 +58,7 @@ truth = "1.4.2"
 turbine = "1.1.0"
 # Koin
 koin = "4.0.2"
-kotzilla = "1.0.2-RC3"
+kotzilla = "1.1.0"
 
 [bundles]
 androidx-compose-ui-test = ["androidx-compose-ui-test", "androidx-compose-ui-testManifest"]
@@ -160,9 +160,7 @@ koin-androidx-compose = {group = "io.insert-koin", name = "koin-androidx-compose
 koin-androidx-workmanager = {group = "io.insert-koin", name = "koin-androidx-workmanager", version.ref = "koin"}
 koin-compose-viewmodel = {group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin"}
 
-kotzilla-sdk = {group = "io.kotzilla", name = "kotzilla-sdk", version.ref = "kotzilla" }
-kotzilla-sdk-ktor3 = {group = "io.kotzilla", name = "kotzilla-sdk-ktor3", version.ref = "kotzilla" }
-kotzilla-plugin = {group = "io.kotzilla", name = "kotzilla-plugin", version.ref = "kotzilla" }
+kotzilla-sdk-ktor3 = { group = "io.kotzilla", name = "kotzilla-sdk-ktor3", version.ref = "kotzilla" }
 
 
 # Dependencies of the included build-logic

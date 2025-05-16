@@ -24,15 +24,9 @@ import com.google.samples.apps.nowinandroid.core.data.model.Issues.blockForIssue
 import com.google.samples.apps.nowinandroid.di.appModule
 import com.google.samples.apps.nowinandroid.sync.initializers.Sync
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
-import io.kotzilla.sdk.KotzillaCoreSDK
 import io.kotzilla.sdk.KotzillaSDK
 import io.kotzilla.sdk.analytics.koin.analytics
-import io.kotzilla.sdk.analytics.koin.analyticsLogger
-import io.kotzilla.sdk.android.security.apiKey
-import io.kotzilla.sdk.androidAnalytics
 import io.kotzilla.sdk.config.Environment.Staging
-import io.kotzilla.sdk.getVersionName
-import io.kotzilla.sdk.setAndroidLogger
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.koin.workManagerFactory

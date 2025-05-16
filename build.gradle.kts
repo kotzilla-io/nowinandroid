@@ -26,7 +26,6 @@ buildscript {
         classpath(libs.google.oss.licenses.plugin) {
             exclude(group = "com.google.protobuf")
         }
-        classpath(libs.kotzilla.plugin)
     }
 
 }

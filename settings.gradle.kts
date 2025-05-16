@@ -20,10 +20,10 @@ pluginManagement {
     repositories {
         google()
 //        mavenLocal()
-        maven {
-            name = "kotzilla"
-            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
-        }
+//        maven {
+//            name = "kotzilla"
+//            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
+//        }
         mavenCentral()
         gradlePluginPortal()
 
@@ -35,10 +35,10 @@ dependencyResolutionManagement {
     repositories {
         google()
 //        mavenLocal()
-        maven {
-            name = "kotzilla"
-            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
-        }
+//        maven {
+//            name = "kotzilla"
+//            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
+//        }
         mavenCentral()
     }
 }
