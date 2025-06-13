@@ -17,6 +17,7 @@
 package com.google.samples.apps.nowinandroid
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
@@ -48,13 +49,18 @@ import com.google.samples.apps.nowinandroid.core.ui.LocalTimeZone
 import com.google.samples.apps.nowinandroid.ui.NiaApp
 import com.google.samples.apps.nowinandroid.ui.rememberNiaAppState
 import io.kotzilla.sdk.KotzillaSDK
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.KoinAndroidContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import kotlin.random.Random
+import kotlin.random.nextLong
 
 // To keep for ViewModels
 //@AndroidEntryPoint
@@ -104,6 +110,18 @@ class MainActivity : ComponentActivity() {
         // including IME animations, and go edge-to-edge
         // This also sets up the initial system bar style based on the platform theme
         enableEdgeToEdge()
+
+        //TODO Load Test
+        val max = 5000
+        lifecycleScope.launch(Dispatchers.IO) {
+            (1..max).forEach { i ->
+//                i -> KotzillaSDK.log("extra log $i")
+                getKoin().get<AnalyticsHelper>()
+                val rnd = Random.nextLong(10)
+                delay(rnd)
+            }
+            Log.d("Test","sendEvents $max ended")
+        }
 
         setContent {
             val darkTheme = shouldUseDarkTheme(uiState)
