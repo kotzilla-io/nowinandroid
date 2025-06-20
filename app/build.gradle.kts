@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import com.google.samples.apps.nowinandroid.NiaBuildType
+import io.kotzilla.gradle.kcp.InstrumentationMode
 
 plugins {
     alias(libs.plugins.nowinandroid.android.application)
@@ -145,6 +146,7 @@ dependencies {
 
 //    implementation(libs.kotzilla.sdk)
     implementation(libs.kotzilla.sdk.ktor3)
+    implementation(libs.kotzilla.sdk.compose)
 }
 
 baselineProfile {
@@ -167,4 +169,5 @@ kotzilla {
     site = "https://gateway-staging.kotzilla.io"
     // Staging App - Now In Android 2025.03
     projectFile = "kotzilla-staging.json"
+    composeInstrumentation = InstrumentationMode.AUTO
 }
