@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 import com.google.samples.apps.nowinandroid.NiaBuildType
-import io.kotzilla.gradle.kcp.InstrumentationMode
 
 plugins {
     alias(libs.plugins.nowinandroid.android.application)
@@ -34,7 +33,7 @@ android {
     defaultConfig {
         applicationId = "com.google.samples.apps.nowinandroid"
         versionCode = 8
-        versionName = "0.1.2-1.1.0" // X.Y.Z; X = Major, Y = minor, Z = Patch level
+        versionName = "0.1.2-1.2.0-Alpha8" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
         // Custom test runner to set up Hilt dependency graph
         testInstrumentationRunner = "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
@@ -145,7 +144,7 @@ dependencies {
     baselineProfile(projects.benchmarks)
 
 //    implementation(libs.kotzilla.sdk)
-    implementation(libs.kotzilla.sdk.ktor3)
+//    implementation(libs.kotzilla.sdk.ktor3)
     implementation(libs.kotzilla.sdk.compose)
 }
 
@@ -169,5 +168,5 @@ kotzilla {
     site = "https://gateway-staging.kotzilla.io"
     // Staging App - Now In Android 2025.03
     projectFile = "kotzilla-staging.json"
-    composeInstrumentation = InstrumentationMode.AUTO
+    composeInstrumentation = true
 }
