@@ -27,11 +27,14 @@ import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
 import io.kotzilla.sdk.KotzillaSDK
 import io.kotzilla.sdk.analytics.koin.analytics
 import io.kotzilla.sdk.config.Environment.Staging
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.core.context.startKoin
+import kotlin.random.Random
 
 /**
  * [Application] class for NiA
@@ -111,6 +114,15 @@ class NiaApplication : Application(), ImageLoaderFactory {
         profileVerifierLogger()
 
         blockForIssue(Issue.STARTUP_TIME)
+
+        // Random crash
+        runBlocking {
+            KotzillaSDK.log("make app crash ..;")
+            val goCrash = Random.nextInt(4)
+            val rnd = Random.nextLong(500)
+            delay(rnd)
+            if (goCrash == 1) error("Got random crash - $rnd")
+        }
     }
 
     override fun newImageLoader(): ImageLoader = imageLoader
