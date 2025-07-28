@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import com.google.samples.apps.nowinandroid.NiaBuildType
+import io.kotzilla.gradle.ext.KotzillaKeyGeneration
 
 plugins {
     alias(libs.plugins.nowinandroid.android.application)
@@ -169,4 +170,5 @@ kotzilla {
     // Staging App - Now In Android 2025.03
     projectFile = "kotzilla-staging.json"
     composeInstrumentation = true
+    keyGeneration = KotzillaKeyGeneration.COMPOSE
 }
