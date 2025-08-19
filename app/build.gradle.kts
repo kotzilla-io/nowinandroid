@@ -169,6 +169,6 @@ kotzilla {
     site = "https://gateway-staging.kotzilla.io"
     // Staging App - Now In Android 2025.03
     projectFile = "kotzilla-staging.json"
+    // Compose Nav
     composeInstrumentation = true
-    keyGeneration = KotzillaKeyGeneration.COMPOSE
 }
