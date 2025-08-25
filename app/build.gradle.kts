@@ -34,7 +34,7 @@ android {
     defaultConfig {
         applicationId = "com.google.samples.apps.nowinandroid"
         versionCode = 8
-        versionName = "0.1.2-1.2.0-Beta3" // X.Y.Z; X = Major, Y = minor, Z = Patch level
+        versionName = "0.1.3-1.2.0-Beta3" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
         // Custom test runner to set up Hilt dependency graph
         testInstrumentationRunner = "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
@@ -147,6 +147,11 @@ dependencies {
 //    implementation(libs.kotzilla.sdk)
 //    implementation(libs.kotzilla.sdk.ktor3)
     implementation(libs.kotzilla.sdk.compose)
+
+    //firebase
+    //https://console.firebase.google.com/u/0/project/nowinandroid-koin/crashlytics/app/android:com.google.samples.apps.nowinandroid.demo.debug/issues?state=open&time=last-seven-days&types=crash&tag=all&sort=eventCount
+    implementation(platform("com.google.firebase:firebase-bom:34.1.0"))
+    implementation("com.google.firebase:firebase-analytics")
 }
 
 baselineProfile {

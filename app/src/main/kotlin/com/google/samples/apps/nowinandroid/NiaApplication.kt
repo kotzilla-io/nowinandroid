@@ -106,8 +106,11 @@ class NiaApplication : Application(), ImageLoaderFactory {
         }
 
         // Initialize Sync; the system responsible for keeping data in the app up to date.
-        KotzillaSDK.log("let's fire an issue")
-        KotzillaSDK.createIssue("Custom Business Issue","Issue detected at start!")
+//        KotzillaSDK.log("let's fire an issue")
+
+        // Create business marker
+//        KotzillaSDK.createIssue("Custom Business Issue","Issue detected at start!")
+
         KotzillaSDK.log("event: null trnsition from alert_analysis to alert_analysis")
 
         Sync.initialize(context = this)
@@ -117,11 +120,19 @@ class NiaApplication : Application(), ImageLoaderFactory {
 
         // Random crash
         runBlocking {
-            KotzillaSDK.log("make app crash ..;")
-            val goCrash = Random.nextInt(4)
-            val rnd = Random.nextLong(500)
-            delay(rnd)
-            if (goCrash == 1) error("Got random crash - $rnd")
+            val randomCrash = Random.nextInt(3)
+            val hasCrash = randomCrash == 1
+            val randomDelay = Random.nextLong(500)
+            KotzillaSDK.setProperties(
+                "has_crash" to hasCrash,
+                "crash_delay" to randomDelay
+            )
+
+            if (hasCrash) {
+                KotzillaSDK.log("let's crash ...")
+                delay(randomDelay)
+                error("LET'S CRASH!")
+            }
         }
     }
 
