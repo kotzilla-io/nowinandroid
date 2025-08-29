@@ -31,6 +31,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.core.context.startKoin
@@ -81,18 +82,8 @@ class NiaApplication : Application(), ImageLoaderFactory {
 //            .connect()
 
         startKoin {
+            androidLogger()// ok, wrapped
             androidContext(this@NiaApplication)
-
-            // one-line setup Android
-//            analytics()
-
-            // one-line setup KMP
-//            analytics {
-//                // in KMP
-//                setApiKey()
-//                setVersion()
-//            }
-
             // internal dev
             analytics {
                 setEnvironment(Staging)
@@ -102,6 +93,8 @@ class NiaApplication : Application(), ImageLoaderFactory {
                 }
             }
             modules(appModule)
+
+//            androidLogger(Level.DEBUG)// bad, but wrapped too
             workManagerFactory()
         }
 
@@ -120,7 +113,7 @@ class NiaApplication : Application(), ImageLoaderFactory {
 
         // Random crash
         runBlocking {
-            val randomCrash = Random.nextInt(3)
+            val randomCrash = Random.nextInt(4)
             val hasCrash = randomCrash == 1
             val randomDelay = Random.nextLong(500)
             KotzillaSDK.setProperties(
@@ -134,6 +127,11 @@ class NiaApplication : Application(), ImageLoaderFactory {
                 error("LET'S CRASH!")
             }
         }
+    }
+
+    override fun onTerminate() {
+        super.onTerminate()
+        KotzillaSDK.close()
     }
 
     override fun newImageLoader(): ImageLoader = imageLoader

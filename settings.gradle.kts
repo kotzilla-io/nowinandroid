@@ -19,7 +19,7 @@ pluginManagement {
     includeBuild("build-logic")
     repositories {
         google()
-//        mavenLocal()
+        mavenLocal()
 //        maven {
 //            name = "kotzilla"
 //            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
@@ -34,7 +34,7 @@ dependencyResolutionManagement {
     repositoriesMode = RepositoriesMode.FAIL_ON_PROJECT_REPOS
     repositories {
         google()
-//        mavenLocal()
+        mavenLocal()
 //        maven {
 //            name = "kotzilla"
 //            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
