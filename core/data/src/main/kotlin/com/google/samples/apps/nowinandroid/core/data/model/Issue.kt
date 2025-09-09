@@ -45,6 +45,10 @@ object Issues {
         }
     }
 
+    fun blockingThreadIssue(d : Long){
+        Thread.sleep(d)
+    }
+
     const val STARTUP_DELAY = 1000L
 }
 

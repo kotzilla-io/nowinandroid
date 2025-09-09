@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.samples.apps.nowinandroid.MainActivityUiState.Loading
 import com.google.samples.apps.nowinandroid.MainActivityUiState.Success
+import com.google.samples.apps.nowinandroid.core.data.model.Issues.blockingThreadIssue
 import com.google.samples.apps.nowinandroid.core.data.repository.UserDataRepository
 import com.google.samples.apps.nowinandroid.core.model.data.UserData
 import kotlinx.coroutines.flow.SharingStarted
@@ -30,6 +31,11 @@ import kotlinx.coroutines.flow.stateIn
 class MainActivityViewModel(
     userDataRepository: UserDataRepository,
 ) : ViewModel() {
+
+    init {
+        blockingThreadIssue(1500)
+    }
+
     val uiState: StateFlow<MainActivityUiState> = userDataRepository.userData.map {
         Success(it)
     }.stateIn(
