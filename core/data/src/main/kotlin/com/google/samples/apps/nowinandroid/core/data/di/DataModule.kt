@@ -16,7 +16,6 @@
 
 package com.google.samples.apps.nowinandroid.core.data.di
 
-import androidx.datastore.core.DataStore
 import com.google.samples.apps.nowinandroid.core.data.repository.DefaultRecentSearchRepository
 import com.google.samples.apps.nowinandroid.core.data.repository.DefaultSearchContentsRepository
 import com.google.samples.apps.nowinandroid.core.data.repository.NewsRepository
@@ -36,35 +35,18 @@ import com.google.samples.apps.nowinandroid.core.datastore.di.dataStoreModule
 import com.google.samples.apps.nowinandroid.core.network.di.coroutineScopesKoinModule
 import com.google.samples.apps.nowinandroid.core.network.di.flavoredNetworkModule
 import com.google.samples.apps.nowinandroid.core.notifications.notificationsModule
-import org.koin.core.module.dsl.singleOf
+import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
-//@Module
-//@InstallIn(SingletonComponent::class)
-//object DataModuleBridgeDagger : KoinComponent {
-//
-//    @Provides
-//    fun providesNetworkMonitor() : NetworkMonitor = getKoin().get()
-//
-//    @Provides
-//    fun providesTimeZoneMonitor() : TimeZoneMonitor = getKoin().get()
-//
-//}
-//
-////TODO Remove TestDataModule
-//@Module(includes = [DataModuleBridgeDagger::class])
-//@InstallIn(SingletonComponent::class)
-//abstract class DataModule {
-//}
-
 val dataKoinModule = module {
     includes(userNewsResourceRepositoryKoinModule, coroutineScopesKoinModule, daosModule, dataStoreModule, flavoredNetworkModule, notificationsModule)
-    singleOf(::ConnectivityManagerNetworkMonitor) bind NetworkMonitor::class
-    singleOf(::TimeZoneBroadcastMonitor) bind TimeZoneMonitor::class
-    singleOf(::DefaultSearchContentsRepository) bind SearchContentsRepository::class
-    singleOf(::DefaultRecentSearchRepository) bind RecentSearchRepository::class
-    singleOf(::OfflineFirstNewsRepository) bind NewsRepository::class
-    singleOf(::OfflineFirstTopicsRepository) bind TopicsRepository::class
-    singleOf(::OfflineFirstUserDataRepository) bind UserDataRepository::class
+    //should be singleOf
+    factoryOf(::ConnectivityManagerNetworkMonitor) bind NetworkMonitor::class
+    factoryOf(::TimeZoneBroadcastMonitor) bind TimeZoneMonitor::class
+    factoryOf(::DefaultSearchContentsRepository) bind SearchContentsRepository::class
+    factoryOf(::DefaultRecentSearchRepository) bind RecentSearchRepository::class
+    factoryOf(::OfflineFirstNewsRepository) bind NewsRepository::class
+    factoryOf(::OfflineFirstTopicsRepository) bind TopicsRepository::class
+    factoryOf(::OfflineFirstUserDataRepository) bind UserDataRepository::class
 }

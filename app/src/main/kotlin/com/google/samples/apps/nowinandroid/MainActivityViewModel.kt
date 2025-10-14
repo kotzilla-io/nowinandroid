@@ -33,7 +33,7 @@ class MainActivityViewModel(
 ) : ViewModel() {
 
     init {
-        blockingThreadIssue(1500)
+//        onPostInit()
     }
 
     val uiState: StateFlow<MainActivityUiState> = userDataRepository.userData.map {
@@ -43,6 +43,10 @@ class MainActivityViewModel(
         initialValue = Loading,
         started = SharingStarted.WhileSubscribed(5_000),
     )
+
+    private fun onPostInit() {
+//        blockingThreadIssue(1500)
+    }
 }
 
 sealed interface MainActivityUiState {

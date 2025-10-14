@@ -18,6 +18,7 @@ package com.google.samples.apps.nowinandroid.core.data.di
 
 import com.google.samples.apps.nowinandroid.core.data.repository.CompositeUserNewsResourceRepository
 import com.google.samples.apps.nowinandroid.core.data.repository.UserNewsResourceRepository
+import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
@@ -31,5 +32,6 @@ import org.koin.dsl.module
 //}
 
 val userNewsResourceRepositoryKoinModule = module {
-    singleOf(::CompositeUserNewsResourceRepository) bind UserNewsResourceRepository::class
+    //should be singleOf
+    factoryOf(::CompositeUserNewsResourceRepository) bind UserNewsResourceRepository::class
 }

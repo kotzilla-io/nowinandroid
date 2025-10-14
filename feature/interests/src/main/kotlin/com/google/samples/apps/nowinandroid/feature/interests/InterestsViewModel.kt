@@ -37,6 +37,14 @@ class InterestsViewModel(
     getFollowableTopics: GetFollowableTopicsUseCase,
 ) : ViewModel() {
 
+//    init {
+//        makeItCrash()
+//    }
+//
+//    private fun makeItCrash() {
+//        error("Oops, we got an error in InterestsViewModel!")
+//    }
+
     // Key used to save and retrieve the currently selected topic id from saved state.
     private val selectedTopicIdKey = "selectedTopicIdKey"
 

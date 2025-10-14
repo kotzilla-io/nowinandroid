@@ -64,7 +64,7 @@ class SyncWorker(
 ) : CoroutineWorker(appContext, workerParams), Synchronizer {
 
     init {
-        blockingThreadIssue(1500)
+        onPostInit()
     }
 
     override suspend fun getForegroundInfo(): ForegroundInfo =
@@ -99,6 +99,10 @@ class SyncWorker(
     override suspend fun updateChangeListVersions(
         update: ChangeListVersions.() -> ChangeListVersions,
     ) = niaPreferences.updateChangeListVersion(update)
+
+    private fun onPostInit() {
+//        blockingThreadIssue(1500)
+    }
 
     companion object {
         /**

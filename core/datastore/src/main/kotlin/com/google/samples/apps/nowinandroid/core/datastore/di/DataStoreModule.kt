@@ -29,28 +29,6 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
-//@Module
-//@InstallIn(SingletonComponent::class)
-//object DataStoreModule {
-//
-//    @Provides
-//    @Singleton
-//    internal fun providesUserPreferencesDataStore(
-//        @ApplicationContext context: Context,
-//        @Dispatcher(IO) ioDispatcher: CoroutineDispatcher,
-//        @ApplicationScope scope: CoroutineScope,
-//        userPreferencesSerializer: UserPreferencesSerializer,
-//    ): DataStore<UserPreferences> =
-//        DataStoreFactory.create(
-//            serializer = userPreferencesSerializer,
-//            scope = CoroutineScope(scope.coroutineContext + ioDispatcher),
-//            migrations = listOf(
-//                IntToStringIdsMigration,
-//            ),
-//        ) {
-//            context.dataStoreFile("user_preferences.pb")
-//        }
-//}
 
 val dataStoreModule = module {
     single { UserPreferencesSerializer() }

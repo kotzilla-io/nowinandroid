@@ -20,16 +20,8 @@ import com.google.samples.apps.nowinandroid.core.network.NiaNetworkDataSource
 import com.google.samples.apps.nowinandroid.core.network.demo.DemoNiaNetworkDataSource
 import org.koin.dsl.module
 
-//@Module
-//@InstallIn(SingletonComponent::class)
-//internal interface FlavoredNetworkModule {
-//
-//    @Binds
-//    fun binds(impl: DemoNiaNetworkDataSource): NiaNetworkDataSource
-//}
-
 val flavoredNetworkModule = module {
     includes(networkModule)
-
-    single<NiaNetworkDataSource> { DemoNiaNetworkDataSource(get(),get(),get()) }
+    //should be single
+    factory<NiaNetworkDataSource> { DemoNiaNetworkDataSource(get(),get(),get()) }
 }

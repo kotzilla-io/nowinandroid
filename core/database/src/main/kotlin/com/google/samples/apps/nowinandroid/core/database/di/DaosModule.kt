@@ -20,27 +20,15 @@ import com.google.samples.apps.nowinandroid.core.database.NiaDatabase
 import org.koin.core.scope.Scope
 import org.koin.dsl.module
 
-//@Module
-//@InstallIn(SingletonComponent::class)
-//internal object DaosModule : KoinComponent {
-//
-////    // Bridged to Koin
-////    @Provides
-////    fun providesTopicsDao(): TopicDao = getKoin().get()
-////
-////    @Provides
-////    fun providesNewsResourceDao(): NewsResourceDao = getKoin().get()
-//
-//}
-
 val daosModule = module {
     includes(databaseModule)
 
-    single { niaDatabase().topicDao() }
-    single { niaDatabase().newsResourceDao() }
-    single { niaDatabase().topicFtsDao() }
-    single { niaDatabase().newsResourceFtsDao() }
-    single { niaDatabase().recentSearchQueryDao() }
+    //should be single
+    factory { niaDatabase().topicDao() }
+    factory { niaDatabase().newsResourceDao() }
+    factory { niaDatabase().topicFtsDao() }
+    factory { niaDatabase().newsResourceFtsDao() }
+    factory { niaDatabase().recentSearchQueryDao() }
 }
 
 private fun Scope.niaDatabase() = get<NiaDatabase>()
