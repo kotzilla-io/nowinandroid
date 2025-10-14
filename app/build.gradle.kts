@@ -20,18 +20,19 @@ plugins {
     alias(libs.plugins.nowinandroid.android.application.compose)
     alias(libs.plugins.nowinandroid.android.application.flavors)
     alias(libs.plugins.nowinandroid.android.application.jacoco)
-    alias(libs.plugins.nowinandroid.android.application.firebase)
+//    alias(libs.plugins.nowinandroid.android.application.firebase)
     id("com.google.android.gms.oss-licenses-plugin")
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotzilla)
 }
 
 android {
     defaultConfig {
         applicationId = "com.google.samples.apps.nowinandroid"
         versionCode = 8
-        versionName = "0.1.3-1.2.1" // X.Y.Z; X = Major, Y = minor, Z = Patch level
+        versionName = "0.1.0-workshop" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
         // Custom test runner to set up Hilt dependency graph
         testInstrumentationRunner = "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
@@ -111,18 +112,10 @@ dependencies {
 //    ksp(libs.hilt.compiler)
 
     debugImplementation(libs.androidx.compose.ui.testManifest)
-//    debugImplementation(projects.uiTestHiltManifest)
-
-//    kspTest(libs.hilt.compiler)
-
-//    testImplementation(projects.core.dataTest)
-//    testImplementation(libs.hilt.android.testing)
-//    testImplementation(projects.sync.syncTest)
     testImplementation(libs.kotlin.test)
 
     testDemoImplementation(libs.robolectric)
     testDemoImplementation(libs.roborazzi)
-//    testDemoImplementation(projects.core.screenshotTesting)
 
     androidTestImplementation(kotlin("test"))
 //    androidTestImplementation(projects.core.testing)
@@ -135,11 +128,12 @@ dependencies {
 
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
-//    implementation(libs.koin.androidx.startup)
     implementation(libs.koin.androidx.workmanager)
     testImplementation(libs.koin.android.test)
 
     baselineProfile(projects.benchmarks)
+
+    implementation(libs.kotzilla.sdk.compose)
 
     //firebase
     //https://console.firebase.google.com/u/0/project/nowinandroid-koin/crashlytics/app/android:com.google.samples.apps.nowinandroid.demo.debug/issues?state=open&time=last-seven-days&types=crash&tag=all&sort=eventCount
@@ -158,4 +152,12 @@ baselineProfile {
 
 dependencyGuard {
     configuration("prodReleaseRuntimeClasspath")
+}
+
+kotzilla {
+    site = "https://gateway-staging.kotzilla.io"
+    displayLogs = true
+
+    // Compose Navigation
+    composeInstrumentation = true
 }
