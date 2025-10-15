@@ -17,16 +17,20 @@
 package com.google.samples.apps.nowinandroid
 
 import android.app.Application
+import android.util.Log
 import coil.ImageLoader
 import coil.ImageLoaderFactory
 import com.google.samples.apps.nowinandroid.di.appModule
 import com.google.samples.apps.nowinandroid.sync.initializers.Sync
 import com.google.samples.apps.nowinandroid.util.ProfileVerifierLogger
+import io.kotzilla.sdk.analytics.koin.analytics
+import io.kotzilla.sdk.config.Environment
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.context.startKoin
+import kotlin.random.Random
 
 /**
  * [Application] class for NiA
@@ -42,6 +46,13 @@ class NiaApplication : Application(), ImageLoaderFactory {
         startKoin {
             androidLogger()
             androidContext(this@NiaApplication)
+            analytics {
+                setEnvironment(Environment.Staging)
+                onConfig {
+                    useDebugLogs = true
+                    refreshRate = 15_000L
+                }
+            }
 
             modules(appModule)
             workManagerFactory()
@@ -50,11 +61,18 @@ class NiaApplication : Application(), ImageLoaderFactory {
         Sync.initialize(context = this)
         profileVerifierLogger()
 
-        onPostLoading()
+        onGenerateCrash()
     }
 
-    private fun onPostLoading() {
-        blockingThreadIssue(10_000)
+    private fun onGenerateCrash() {
+        val crashRate = 0.5
+        val random = Random.nextDouble(0.01,1.0)
+        Log.w("[CRASH]","random crash? $random -> $crashRate ?")
+        if (random <= crashRate){
+            Log.w("[CRASH]","--- Prepare for crash 💥 ---")
+            Thread.sleep(5000)
+            error("Crashing")
+        }
     }
 
     override fun newImageLoader(): ImageLoader = imageLoader
