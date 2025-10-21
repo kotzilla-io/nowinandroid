@@ -4,7 +4,6 @@
 APK_PATH="./build/outputs/apk/demo/debug/app-demo-debug.apk"
 PACKAGE_NAME="com.google.samples.apps.nowinandroid.demo.debug"
 MAIN_ACTIVITY="com.google.samples.apps.nowinandroid.MainActivity"
-OUTPUT_FILE="benchmark_log.txt"
 
 NUM_LOOPS=10  # Number of times to loop
 WAIT_TIME=7   # Time to wait in seconds between each loop iteration
@@ -35,9 +34,3 @@ do
   echo "Stopping the app... (Iteration $i)"
   adb shell am force-stop $PACKAGE_NAME
 done
-
-# Step 6: Extract the log file from the app's internal storage
-echo "Retrieving the log file..."
-adb shell run-as $PACKAGE_NAME cat /data/user/0/$PACKAGE_NAME/files/$OUTPUT_FILE > $OUTPUT_FILE
-
-echo "Log file saved to $OUTPUT_FILE"

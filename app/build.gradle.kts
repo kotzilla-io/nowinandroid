@@ -20,7 +20,7 @@ plugins {
     alias(libs.plugins.nowinandroid.android.application.compose)
     alias(libs.plugins.nowinandroid.android.application.flavors)
     alias(libs.plugins.nowinandroid.android.application.jacoco)
-//    alias(libs.plugins.nowinandroid.android.application.firebase)
+    alias(libs.plugins.nowinandroid.android.application.firebase)
     id("com.google.android.gms.oss-licenses-plugin")
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi)
@@ -61,6 +61,22 @@ android {
             baselineProfile.automaticGenerationDuringBuild = true
         }
     }
+
+//    //flavors
+//    flavorDimensions += listOf("mode")
+//
+//    productFlavors {
+//        create("free") {
+//            // Assigns this product flavor to the "mode" flavor dimension.
+//            dimension = "mode"
+//            versionNameSuffix = "-free"
+//        }
+//
+//        create("premium") {
+//            dimension = "mode"
+//            versionNameSuffix = "-premium"
+//        }
+//    }
 
     packaging {
         resources {
