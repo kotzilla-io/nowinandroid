@@ -155,9 +155,6 @@ dependencyGuard {
 }
 
 kotzilla {
-    site = "https://gateway-staging.kotzilla.io"
-    displayLogs = true
-
     // Compose Navigation
     composeInstrumentation = true
 }
