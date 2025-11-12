@@ -19,11 +19,11 @@ pluginManagement {
     includeBuild("build-logic")
     repositories {
         google()
-        mavenLocal()
-//        maven {
-//            name = "kotzilla"
-//            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
-//        }
+//        mavenLocal()
+        maven {
+            name = "kotzilla"
+            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
+        }
         mavenCentral()
         gradlePluginPortal()
 
@@ -34,11 +34,11 @@ dependencyResolutionManagement {
     repositoriesMode = RepositoriesMode.FAIL_ON_PROJECT_REPOS
     repositories {
         google()
-        mavenLocal()
-//        maven {
-//            name = "kotzilla"
-//            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
-//        }
+//        mavenLocal()
+        maven {
+            name = "kotzilla"
+            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
+        }
         mavenCentral()
     }
 }

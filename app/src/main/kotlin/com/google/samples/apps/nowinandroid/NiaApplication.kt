@@ -48,13 +48,18 @@ class NiaApplication : Application(), ImageLoaderFactory {
             modules(appModule)
             workManagerFactory()
 
-            analytics()
+            analytics {
+                onConfig {
+                    useDebugLogs = true
+                    refreshRate = 15_000L
+                }
+            }
         }
 
         Sync.initialize(context = this)
         profileVerifierLogger()
 
-        onPostLoading()
+//        onPostLoading()
     }
 
     private fun onPostLoading() {

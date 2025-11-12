@@ -20,7 +20,7 @@ plugins {
     alias(libs.plugins.nowinandroid.android.application.compose)
     alias(libs.plugins.nowinandroid.android.application.flavors)
     alias(libs.plugins.nowinandroid.android.application.jacoco)
-//    alias(libs.plugins.nowinandroid.android.application.firebase)
+    alias(libs.plugins.nowinandroid.android.application.firebase)
     id("com.google.android.gms.oss-licenses-plugin")
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi)
@@ -32,7 +32,7 @@ android {
     defaultConfig {
         applicationId = "com.google.samples.apps.nowinandroid"
         versionCode = 8
-        versionName = "0.1.0-workshop" // X.Y.Z; X = Major, Y = minor, Z = Patch level
+        versionName = "1.4.0-RC1" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
         // Custom test runner to set up Hilt dependency graph
         testInstrumentationRunner = "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
@@ -155,6 +155,8 @@ dependencyGuard {
 }
 
 kotzilla {
+    displayLogs = true
+
     // Compose Navigation
     composeInstrumentation = true
 }
